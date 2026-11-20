@@ -1,0 +1,2630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#050508" />
+  <title>Unit 6 – Work and Money | Neon Interactive Assessment</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Orbitron (Headers/Accents) & Inter (Crisp Reading) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-void: #050508;
+      --bg-deep: #0a0a12;
+      --bg-card: rgba(16, 16, 28, 0.92);
+      --bg-card-solid: #10101c;
+      --neon-cyan: #00f3ff;
+      --neon-magenta: #ff007f;
+      --neon-green: #39ff14;
+      --neon-amber: #ffe600;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --border-subtle: rgba(0, 243, 255, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Anti-Copy User Select Protection during active exam */
+    body.exam-locked-copy {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    body.exam-locked-copy input,
+    body.exam-locked-copy textarea,
+    body.exam-locked-copy select {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      min-height: 100dvh;
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
+      overscroll-behavior-y: none;
+    }
+
+    /* Ambient Cyber Grid Background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(0, 243, 255, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(255, 0, 127, 0.08) 0%, transparent 45%),
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .font-cyber {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    /* Safe Area Utilities for iPhone Notch & Home Indicator */
+    .safe-top {
+      padding-top: max(12px, env(safe-area-inset-top));
+    }
+    .safe-bottom {
+      padding-bottom: max(14px, env(safe-area-inset-bottom));
+    }
+    .safe-x {
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
+    }
+
+    /* Neon Glow Effects */
+    .neon-border-cyan {
+      border: 1px solid rgba(0, 243, 255, 0.45);
+      box-shadow: 0 0 18px rgba(0, 243, 255, 0.14), inset 0 0 12px rgba(0, 243, 255, 0.05);
+    }
+
+    .neon-border-magenta {
+      border: 1px solid rgba(255, 0, 127, 0.55);
+      box-shadow: 0 0 18px rgba(255, 0, 127, 0.18), inset 0 0 12px rgba(255, 0, 127, 0.06);
+    }
+
+    .neon-glow-text-cyan {
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.65);
+    }
+
+    .neon-glow-text-magenta {
+      text-shadow: 0 0 10px rgba(255, 0, 127, 0.65);
+    }
+
+    /* Buttons */
+    .btn-neon-cyan {
+      background: linear-gradient(135deg, rgba(0, 243, 255, 0.18), rgba(0, 243, 255, 0.08));
+      border: 1.5px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      box-shadow: 0 0 14px rgba(0, 243, 255, 0.25);
+      transition: all 0.18s ease;
+    }
+    .btn-neon-cyan:hover:not(:disabled) {
+      background: var(--neon-cyan);
+      color: #050508;
+      box-shadow: 0 0 24px rgba(0, 243, 255, 0.6);
+    }
+    .btn-neon-cyan:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .btn-neon-magenta {
+      background: linear-gradient(135deg, #ff007f, #c80064);
+      border: 1.5px solid #ff4da6;
+      color: #ffffff;
+      box-shadow: 0 0 18px rgba(255, 0, 127, 0.45);
+      transition: all 0.18s ease;
+    }
+    .btn-neon-magenta:hover:not(:disabled) {
+      background: linear-gradient(135deg, #ff1a8c, #e60073);
+      box-shadow: 0 0 28px rgba(255, 0, 127, 0.75);
+    }
+    .btn-neon-magenta:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .btn-neon-green {
+      background: linear-gradient(135deg, rgba(57, 255, 20, 0.22), rgba(57, 255, 20, 0.1));
+      border: 1.5px solid var(--neon-green);
+      color: var(--neon-green);
+      box-shadow: 0 0 18px rgba(57, 255, 20, 0.3);
+      transition: all 0.18s ease;
+    }
+    .btn-neon-green:hover:not(:disabled) {
+      background: var(--neon-green);
+      color: #050508;
+      box-shadow: 0 0 26px rgba(57, 255, 20, 0.65);
+    }
+
+    .btn-ghost-dark {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: #cbd5e1;
+      transition: all 0.18s ease;
+    }
+    .btn-ghost-dark:hover:not(:disabled) {
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+      background: rgba(0, 243, 255, 0.08);
+    }
+    .btn-ghost-dark:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* Prevent iOS Safari Auto-Zoom on Focus (16px minimum font-size) */
+    input[type="text"],
+    select,
+    textarea {
+      font-size: 16px !important;
+      color: #ffffff;
+      background-color: rgba(5, 5, 12, 0.85);
+      border: 1px solid rgba(0, 243, 255, 0.35);
+      border-radius: 8px;
+      padding: 8px 12px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 12px rgba(0, 243, 255, 0.35);
+    }
+
+    input[type="text"]::placeholder,
+    textarea::placeholder {
+      color: #64748b;
+    }
+
+    select option {
+      background-color: #0a0a12;
+      color: #f1f5f9;
+    }
+
+    /* Inline Blank Inputs */
+    .inline-blank {
+      display: inline-block;
+      min-width: 140px;
+      max-width: 100%;
+      padding: 4px 10px !important;
+      margin: 3px 4px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--neon-cyan) !important;
+      border: none !important;
+      border-bottom: 2px solid var(--neon-cyan) !important;
+      border-radius: 4px 4px 0 0 !important;
+      background: rgba(0, 243, 255, 0.06) !important;
+    }
+
+    .inline-blank:focus {
+      background: rgba(0, 243, 255, 0.14) !important;
+      box-shadow: 0 4px 12px rgba(0, 243, 255, 0.25) !important;
+    }
+
+    /* Sub-items & Grading States */
+    .sub-item {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid rgba(0, 243, 255, 0.4);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      transition: all 0.25s ease;
+    }
+
+    .sub-item.status-correct {
+      background: rgba(57, 255, 20, 0.08);
+      border-color: rgba(57, 255, 20, 0.4);
+      border-left: 4px solid var(--neon-green);
+      box-shadow: 0 0 14px rgba(57, 255, 20, 0.12);
+    }
+
+    .sub-item.status-incorrect {
+      background: rgba(255, 0, 127, 0.09);
+      border-color: rgba(255, 0, 127, 0.45);
+      border-left: 4px solid var(--neon-magenta);
+      box-shadow: 0 0 14px rgba(255, 0, 127, 0.14);
+    }
+
+    .sub-item.status-pending {
+      background: rgba(255, 230, 0, 0.08);
+      border-color: rgba(255, 230, 0, 0.4);
+      border-left: 4px solid var(--neon-amber);
+      box-shadow: 0 0 14px rgba(255, 230, 0, 0.12);
+    }
+
+    /* Multiple Choice Cards */
+    .mc-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(10, 10, 18, 0.75);
+      border: 1px solid rgba(0, 243, 255, 0.2);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .mc-label:hover {
+      border-color: var(--neon-cyan);
+      background: rgba(0, 243, 255, 0.07);
+    }
+
+    .mc-label:has(input:checked) {
+      border-color: var(--neon-cyan);
+      background: rgba(0, 243, 255, 0.14);
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.22);
+    }
+
+    .mc-label input[type="radio"] {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--neon-cyan);
+      flex-shrink: 0;
+    }
+
+    /* Inline Choice Pills (Q8 & Q12) */
+    .inline-choice-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(5, 5, 10, 0.9);
+      padding: 3px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 0, 127, 0.45);
+      margin: 2px 4px;
+      vertical-align: middle;
+    }
+
+    .inline-choice-group label {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .inline-choice-group input[type="radio"] {
+      display: none;
+    }
+
+    .inline-choice-group span {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      color: #cbd5e1;
+      transition: all 0.15s ease;
+    }
+
+    .inline-choice-group label:hover span {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .inline-choice-group input[type="radio"]:checked + span {
+      background: var(--neon-magenta);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(255, 0, 127, 0.65);
+    }
+
+    /* Feedback Notes */
+    .feedback-note {
+      display: none;
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .feedback-note.visible {
+      display: block;
+      animation: fadeSlideIn 0.25s ease;
+    }
+
+    .feedback-note.correct {
+      background: rgba(57, 255, 20, 0.12);
+      border: 1px solid rgba(57, 255, 20, 0.4);
+      color: #86efac;
+    }
+
+    .feedback-note.incorrect {
+      background: rgba(255, 0, 127, 0.14);
+      border: 1px solid rgba(255, 0, 127, 0.45);
+      color: #fda4af;
+    }
+
+    .feedback-note.pending {
+      background: rgba(255, 230, 0, 0.12);
+      border: 1px solid rgba(255, 230, 0, 0.4);
+      color: #fef08a;
+    }
+
+    /* Step Pills Bar */
+    .step-pill {
+      min-width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(16, 16, 28, 0.8);
+      color: #94a3b8;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .step-pill.answered {
+      border-color: rgba(0, 243, 255, 0.5);
+      color: var(--neon-cyan);
+      background: rgba(0, 243, 255, 0.08);
+    }
+
+    .step-pill.active {
+      border-color: var(--neon-magenta);
+      background: var(--neon-magenta);
+      color: #ffffff;
+      box-shadow: 0 0 14px rgba(255, 0, 127, 0.65);
+      transform: scale(1.06);
+    }
+
+    .step-pill.graded-ok {
+      border-color: var(--neon-green);
+      color: var(--neon-green);
+    }
+
+    .step-pill.graded-warn {
+      border-color: var(--neon-amber);
+      color: var(--neon-amber);
+    }
+
+    /* Hide scrollbar on step strip while keeping scrollability */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Animations */
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulseDanger {
+      0%, 100% {
+        box-shadow: 0 0 12px rgba(255, 0, 127, 0.5);
+        border-color: #ff007f;
+      }
+      50% {
+        box-shadow: 0 0 26px rgba(255, 0, 127, 0.95);
+        border-color: #ffe600;
+      }
+    }
+
+    .timer-danger {
+      animation: pulseDanger 1s infinite;
+      color: #ff4da6 !important;
+      background: rgba(255, 0, 127, 0.22) !important;
+    }
+
+    /* Custom Scrollbar for internal card overflow */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050508;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 243, 255, 0.35);
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-[100dvh] relative z-10 selection:bg-[#ff007f] selection:text-white">
+
+  <!-- ===================================================================== -->
+  <!-- 1. PANTALLA DE BIENVENIDA / INICIO EN PANTALLA COMPLETA               -->
+  <!-- ===================================================================== -->
+  <section id="welcome-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#050508] safe-x safe-top safe-bottom overflow-y-auto">
+    <div class="w-full max-w-xl bg-[#10101c]/95 neon-border-cyan rounded-2xl p-6 sm:p-10 text-center my-auto relative overflow-hidden">
+      <!-- Top Neon Accent Bar -->
+      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00f3ff] via-[#ff007f] to-[#39ff14]"></div>
+
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00f3ff]/10 border border-[#00f3ff]/40 text-[#00f3ff] text-xs font-semibold tracking-wider uppercase mb-4">
+        <span class="w-2 h-2 rounded-full bg-[#00f3ff] animate-pulse"></span>
+        Interactive English Assessment
+      </div>
+
+      <h1 class="font-cyber text-2xl sm:text-4xl font-extrabold tracking-wide text-white neon-glow-text-cyan mb-2">
+        UNIT 6
+      </h1>
+      <h2 class="font-cyber text-lg sm:text-2xl font-bold text-[#ff007f] neon-glow-text-magenta mb-4">
+        WORK AND MONEY
+      </h2>
+
+      <p class="text-slate-300 text-sm sm:text-base mb-6 leading-relaxed">
+        Ingresa tu nombre completo para desbloquear la evaluación en pantalla completa. Visualizarás todas las preguntas (1 a 12) adaptadas al 100% de tu pantalla con temporizador de 45 minutos.
+      </p>
+
+      <!-- Student Name Input (Obligatorio) -->
+      <div class="text-left mb-4">
+        <label for="welcome-student-name" class="block text-xs font-bold uppercase tracking-wider text-[#00f3ff] mb-2">
+          Nombre completo del estudiante / Student Name <span class="text-[#ff007f]">*</span>:
+        </label>
+        <input
+          type="text"
+          id="welcome-student-name"
+          class="w-full !py-3 !px-4 !text-base bg-[#050508] border border-[#00f3ff]/50 rounded-xl text-white focus:border-[#00f3ff]"
+          placeholder="Escribe tu nombre y apellido aquí..."
+          autocomplete="name"
+          required
+        />
+        <p id="welcome-name-error" class="hidden mt-2 text-xs font-semibold text-[#ff4da6] bg-[#ff007f]/15 border border-[#ff007f]/50 rounded-lg px-3 py-2">
+          ⚠ Debes ingresar tu nombre completo antes de iniciar la evaluación.
+        </p>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid grid-cols-3 gap-2 sm:gap-3 mb-7 text-xs text-slate-300">
+        <div class="bg-[#050508]/80 border border-white/10 rounded-xl p-2.5">
+          <div class="text-[#00f3ff] font-cyber font-bold text-base">45:00</div>
+          <div>Tiempo Límite</div>
+        </div>
+        <div class="bg-[#050508]/80 border border-white/10 rounded-xl p-2.5">
+          <div class="text-[#ff007f] font-cyber font-bold text-base">10.00</div>
+          <div>Escala Puntos</div>
+        </div>
+        <div class="bg-[#050508]/80 border border-white/10 rounded-xl p-2.5">
+          <div class="text-[#39ff14] font-cyber font-bold text-base">SHIELD</div>
+          <div>Anticopia Activo</div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="btn-start-exam"
+        class="w-full btn-neon-magenta font-cyber font-bold text-sm sm:text-base py-4 px-6 rounded-xl tracking-wider uppercase cursor-pointer"
+      >
+        Iniciar Evaluación en Pantalla Completa →
+      </button>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 2. CONTENEDOR PRINCIPAL DE LA EVALUACIÓN (100% PANTALLA COMPLETA)     -->
+  <!-- ===================================================================== -->
+  <div id="app-shell" class="hidden flex-col w-full min-h-[100dvh]">
+
+    <!-- TOP FIXED HEADER BAR -->
+    <header class="sticky top-0 z-30 w-full bg-[#0a0a12]/95 backdrop-blur-md border-b border-[#00f3ff]/30 safe-top safe-x shadow-[0_4px_20px_rgba(0,0,0,0.65)]">
+      <div class="w-full max-w-6xl mx-auto py-2.5 flex flex-col gap-2">
+        <!-- Row 1: Title, Student Pill, Timer, Anti-Copy Counter, Reading & Fullscreen -->
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="font-cyber text-xs sm:text-sm font-bold text-[#00f3ff] neon-glow-text-cyan">
+              UNIT 6
+            </span>
+            <span id="header-student-badge" class="text-xs px-2.5 py-0.5 rounded-full bg-[#00f3ff]/10 border border-[#00f3ff]/35 text-white font-medium truncate max-w-[140px] sm:max-w-[240px]">
+              Estudiante
+            </span>
+          </div>
+
+          <!-- 45-Minute Countdown Timer -->
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <div
+              id="exam-timer-box"
+              class="px-2.5 sm:px-3 py-1 rounded-lg bg-[#050508] border border-[#00f3ff]/50 font-cyber text-xs sm:text-sm font-bold text-[#00f3ff] flex items-center gap-1.5 shadow-[0_0_10px_rgba(0,243,255,0.2)]"
+              title="Tiempo restante de evaluación"
+            >
+              <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z" />
+              </svg>
+              <span id="exam-timer-display">45:00</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+            <!-- Quick Reading Modal Button -->
+            <button
+              type="button"
+              id="btn-open-reading"
+              class="btn-neon-cyan text-xs font-semibold px-2.5 sm:px-3 py-1.5 rounded-lg flex items-center gap-1.5 cursor-pointer"
+              title="Abrir lectura en ventana flotante"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              <span>Ver Lectura</span>
+            </button>
+
+            <!-- Toggle Fullscreen Button -->
+            <button
+              type="button"
+              id="btn-toggle-fullscreen"
+              class="btn-ghost-dark text-xs p-1.5 rounded-lg cursor-pointer"
+              title="Pantalla Completa"
+              aria-label="Pantalla Completa"
+            >
+              <svg id="icon-fs-enter" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+              </svg>
+              <svg id="icon-fs-exit" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5l5.25 5.25" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Row 2: Global Progress Bar -->
+        <div class="flex items-center justify-between gap-3 text-xs">
+          <span class="font-bold text-slate-300 whitespace-nowrap">
+            Evaluación Completa <span class="text-[#ff007f]">(12 Preguntas)</span>
+          </span>
+
+          <div class="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
+            <div id="progress-bar" class="h-full w-0 bg-gradient-to-r from-[#00f3ff] to-[#ff007f] shadow-[0_0_10px_#00f3ff] transition-all duration-300"></div>
+          </div>
+
+          <span id="progress-label" class="font-semibold text-[#00f3ff] whitespace-nowrap">
+            0 / 47 ítems
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN FULL-WIDTH CONTINUOUS EXAM VIEWPORT -->
+    <main id="question-viewport" class="flex-1 w-full safe-x py-5 sm:py-7">
+      <div class="w-full max-w-6xl mx-auto space-y-6">
+
+        <!-- SCORE SUMMARY BANNER (Appears after grading & teacher unlock) -->
+        <section id="score-summary" class="hidden bg-[#10101c] neon-border-cyan rounded-2xl p-5 sm:p-6" aria-live="polite">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+            <div>
+              <span class="text-xs uppercase tracking-wider text-[#00f3ff] font-bold">Modo Revisión Docente • Calificación Final</span>
+              <h2 class="font-cyber text-lg sm:text-xl font-bold text-white" id="score-student-name">Estudiante</h2>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <div class="px-4 py-2 rounded-xl bg-[#39ff14]/15 border border-[#39ff14] text-[#39ff14] font-cyber font-bold text-xl sm:text-2xl shadow-[0_0_16px_rgba(57,255,20,0.35)]" id="score-ten-badge">
+                0.00 / 10.00
+              </div>
+              <div class="px-3 py-2 rounded-xl bg-[#ff007f]/20 border border-[#ff007f] text-white font-cyber font-bold text-sm sm:text-base" id="score-badge">
+                0 / 46
+              </div>
+            </div>
+          </div>
+          <p class="text-sm text-slate-300 mb-3" id="score-details"></p>
+
+          <!-- Internal Teacher-Only Anti-Copy Audit Log (Visible only after PIN 1955) -->
+          <div id="teacher-audit-panel" class="mb-4 p-3.5 rounded-xl bg-[#050508] border border-[#ff007f]/45">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="text-xs font-cyber uppercase tracking-wider text-[#ff4da6] font-bold">
+                Registro Interno de Seguridad (Solo Docente)
+              </span>
+              <span id="audit-total-badge" class="text-xs font-cyber px-2 py-0.5 rounded bg-[#ff007f]/20 text-[#ff4da6] font-bold">
+                0 incidencias
+              </span>
+            </div>
+            <ul id="audit-log-list" class="max-h-36 overflow-y-auto space-y-1 text-xs text-slate-300 font-mono">
+              <li class="text-slate-500">Sin incidencias registradas.</li>
+            </ul>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <button type="button" id="btn-relock-exam" class="btn-neon-magenta text-xs font-semibold px-3.5 py-2 rounded-lg cursor-pointer">
+              Bloquear Pantalla Nuevamente
+            </button>
+            <button type="button" id="btn-reset-top" class="btn-ghost-dark text-xs font-semibold px-3.5 py-2 rounded-lg cursor-pointer">
+              Nueva Evaluación (Otro Estudiante)
+            </button>
+          </div>
+        </section>
+
+        <!-- INTEGRATED READING PASSAGE CARD AT TOP OF EXAM -->
+        <article class="w-full bg-[#10101c]/95 neon-border-cyan rounded-2xl p-5 sm:p-7 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#00f3ff] to-[#ff007f]"></div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#00f3ff]">Reading Passage • Questions 1 to 4</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-[#00f3ff]/10 border border-[#00f3ff]/30 text-[#00f3ff]">
+              Read carefully before answering Q1–Q4
+            </span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">Caution: Teens at Work</h2>
+          <div class="space-y-3.5 text-slate-200 text-sm sm:text-base leading-relaxed">
+            <p>
+              When teenagers look for a job, they often have just one thing in mind: money. Money for dates, or college, or even their family's rent and groceries. They aren't worried about long-term job security or climbing the career ladder. Most of them don't even think about job safety. But work-related injuries are among the biggest threats to their health. According to the National Institute for Occupational Safety and Health, more than 200,000 kids between the ages of 14 and 17 are hurt on the job every year in the United States, and more than 75,000 require emergency room treatment. Each year, nearly 70 kids under 18 die at work.
+            </p>
+            <p>
+              The types of injuries teens suffer are varied: Some burn themselves making French fries, some injure their backs while loading trucks, others get shot while working the night shift at a convenience store.
+            </p>
+            <p>
+              There are laws protecting them from some of the most dangerous and stressful tasks, but teens shouldn't assume their employers will know or follow these rules. Even large, well-known companies were caught in federal investigations of child labor law violations.
+            </p>
+            <p>
+              Teenage workers need to take charge of their own safety. They should insist on being trained and shouldn't hesitate to ask questions. Teens should also know that they have the right to refuse any task that seems unsafe. After all, some things really are more important than a paycheck.
+            </p>
+          </div>
+        </article>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 1                                                      -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q1">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 01 / 12</span>
+            <span class="text-xs text-slate-400">Reading Comprehension</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">True or False & Correction</h3>
+          <p class="text-sm text-slate-300 mb-5">Write <strong>T</strong> for true or <strong>F</strong> for false and correct the false statements.</p>
+
+          <div class="sub-item" data-qid="q1a">
+            <div class="flex flex-wrap items-center gap-2 text-sm sm:text-base">
+              <span class="font-bold text-[#00f3ff]">a</span>
+              <span>(</span>
+              <select class="track-input !py-1 !px-2.5 font-bold text-[#00f3ff]" name="q1a" aria-label="Question 1a True or False">
+                <option value="">—</option>
+                <option value="T">T</option>
+                <option value="F">F</option>
+              </select>
+              <span>) Teenagers look for a job because they want money for dates, college, or to help their parents with the bills.</span>
+            </div>
+            <div class="mt-2.5 pl-0 sm:pl-6">
+              <input type="text" class="w-full" name="q1a_corr" placeholder="Correction (if false)..." aria-label="Correction for 1a" />
+            </div>
+            <div class="feedback-note" id="fb-q1a"></div>
+          </div>
+
+          <div class="sub-item" data-qid="q1b">
+            <div class="flex flex-wrap items-center gap-2 text-sm sm:text-base">
+              <span class="font-bold text-[#00f3ff]">b</span>
+              <span>(</span>
+              <select class="track-input !py-1 !px-2.5 font-bold text-[#00f3ff]" name="q1b" aria-label="Question 1b True or False">
+                <option value="">—</option>
+                <option value="T">T</option>
+                <option value="F">F</option>
+              </select>
+              <span>) Teenagers in general are not worried about their own safety.</span>
+            </div>
+            <div class="mt-2.5 pl-0 sm:pl-6">
+              <input type="text" class="w-full" name="q1b_corr" placeholder="Correction (if false)..." aria-label="Correction for 1b" />
+            </div>
+            <div class="feedback-note" id="fb-q1b"></div>
+          </div>
+
+          <div class="sub-item" data-qid="q1c">
+            <div class="flex flex-wrap items-center gap-2 text-sm sm:text-base">
+              <span class="font-bold text-[#00f3ff]">c</span>
+              <span>(</span>
+              <select class="track-input !py-1 !px-2.5 font-bold text-[#00f3ff]" name="q1c" aria-label="Question 1c True or False">
+                <option value="">—</option>
+                <option value="T">T</option>
+                <option value="F">F</option>
+              </select>
+              <span>) A number of teens even die while working.</span>
+            </div>
+            <div class="mt-2.5 pl-0 sm:pl-6">
+              <input type="text" class="w-full" name="q1c_corr" placeholder="Correction (if false)..." aria-label="Correction for 1c" />
+            </div>
+            <div class="feedback-note" id="fb-q1c"></div>
+          </div>
+
+          <div class="sub-item" data-qid="q1d">
+            <div class="flex flex-wrap items-center gap-2 text-sm sm:text-base">
+              <span class="font-bold text-[#00f3ff]">d</span>
+              <span>(</span>
+              <select class="track-input !py-1 !px-2.5 font-bold text-[#00f3ff]" name="q1d" aria-label="Question 1d True or False">
+                <option value="">—</option>
+                <option value="T">T</option>
+                <option value="F">F</option>
+              </select>
+              <span>) Large companies, in general, follow the rules to protect teenage workers.</span>
+            </div>
+            <div class="mt-2.5 pl-0 sm:pl-6">
+              <input type="text" class="w-full" name="q1d_corr" placeholder="Correction (if false)..." aria-label="Correction for 1d" />
+            </div>
+            <div class="feedback-note" id="fb-q1d"></div>
+          </div>
+
+          <div class="sub-item" data-qid="q1e">
+            <div class="flex flex-wrap items-center gap-2 text-sm sm:text-base">
+              <span class="font-bold text-[#00f3ff]">e</span>
+              <span>(</span>
+              <select class="track-input !py-1 !px-2.5 font-bold text-[#00f3ff]" name="q1e" aria-label="Question 1e True or False">
+                <option value="">—</option>
+                <option value="T">T</option>
+                <option value="F">F</option>
+              </select>
+              <span>) Teenagers get injured at work because there aren’t laws to protect them.</span>
+            </div>
+            <div class="mt-2.5 pl-0 sm:pl-6">
+              <input type="text" class="w-full" name="q1e_corr" placeholder="Correction (if false)..." aria-label="Correction for 1e" />
+            </div>
+            <div class="feedback-note" id="fb-q1e"></div>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 2                                                      -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q2">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 02 / 12</span>
+            <span class="text-xs text-slate-400">Reading Comprehension</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Main Objective</h3>
+          <p class="text-sm text-slate-300 mb-5">Choose the correct alternative.</p>
+
+          <div class="sub-item" data-qid="q2">
+            <div class="flex flex-col gap-3">
+              <label class="mc-label">
+                <input type="radio" class="track-input" name="q2" value="a" />
+                <span><strong class="text-[#00f3ff]">a</strong> The main objective of the text is to inform readers of the number of work-related injuries among teenagers.</span>
+              </label>
+              <label class="mc-label">
+                <input type="radio" class="track-input" name="q2" value="b" />
+                <span><strong class="text-[#00f3ff]">b</strong> The article shows the employers’ perspective.</span>
+              </label>
+              <label class="mc-label">
+                <input type="radio" class="track-input" name="q2" value="c" />
+                <span><strong class="text-[#00f3ff]">c</strong> The main objective of the text is to help teenage workers be responsible for their own safety (to refuse any task that seems unsafe, insist on being trained, and ask questions).</span>
+              </label>
+              <label class="mc-label">
+                <input type="radio" class="track-input" name="q2" value="d" />
+                <span><strong class="text-[#00f3ff]">d</strong> The article advises teenagers not to work because it’s dangerous.</span>
+              </label>
+            </div>
+            <div class="feedback-note" id="fb-q2"></div>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 3                                                      -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q3">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 03 / 12</span>
+            <span class="text-xs text-slate-400">Reading Data</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Teens at Work Statistics</h3>
+          <p class="text-sm text-slate-300 mb-5">Complete the chart using information from the text.</p>
+
+          <div class="overflow-x-auto rounded-xl border border-[#00f3ff]/30">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-[#00f3ff]/15 text-[#00f3ff] text-xs sm:text-sm uppercase tracking-wider">
+                  <th class="p-3.5 border-b border-[#00f3ff]/30 w-3/5">Teens at work in the US</th>
+                  <th class="p-3.5 border-b border-[#00f3ff]/30 w-2/5">Numbers</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/10 text-sm sm:text-base">
+                <tr class="sub-item" data-qid="q3a">
+                  <td class="p-3.5"><strong class="text-[#00f3ff]">a</strong> Kids hurt on the job per year</td>
+                  <td class="p-3.5">
+                    <input type="text" class="w-full track-input" name="q3a" placeholder="e.g. More than..." />
+                    <div class="feedback-note" id="fb-q3a"></div>
+                  </td>
+                </tr>
+                <tr class="sub-item" data-qid="q3b">
+                  <td class="p-3.5"><strong class="text-[#00f3ff]">b</strong> Kids who need emergency room treatment per year</td>
+                  <td class="p-3.5">
+                    <input type="text" class="w-full track-input" name="q3b" placeholder="e.g. More than..." />
+                    <div class="feedback-note" id="fb-q3b"></div>
+                  </td>
+                </tr>
+                <tr class="sub-item" data-qid="q3c">
+                  <td class="p-3.5"><strong class="text-[#00f3ff]">c</strong> Kids under 18 who die at work per year</td>
+                  <td class="p-3.5">
+                    <input type="text" class="w-full track-input" name="q3c" placeholder="e.g. Nearly..." />
+                    <div class="feedback-note" id="fb-q3c"></div>
+                  </td>
+                </tr>
+                <tr class="sub-item" data-qid="q3d">
+                  <td class="p-3.5"><strong class="text-[#00f3ff]">d</strong> Kids’ ages</td>
+                  <td class="p-3.5">
+                    <input type="text" class="w-full track-input" name="q3d" placeholder="e.g. Between..." />
+                    <div class="feedback-note" id="fb-q3d"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 4                                                      -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q4">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 04 / 12</span>
+            <span class="text-xs text-slate-400">Reading Comprehension</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Types of Injuries</h3>
+          <p class="text-sm text-slate-300 mb-5">Choose the correct alternative according to the text.<br /><span class="text-[#00f3ff] font-medium">Types of injuries suffered by teens at work:</span></p>
+
+          <div class="sub-item" data-qid="q4">
+            <div class="flex flex-col gap-3">
+              <label class="mc-label">
+                <input type="radio" class="track-input" name="q4" value="a" />
+                <span><strong class="text-[#00f3ff]">a</strong> Burns, slips and gunshots</span>
+              </label>
+              <label class="mc-label">
+                <input type="radio" class="track-input" name="q4" value="b" />
+                <span><strong class="text-[#00f3ff]">b</strong> Burns, back injuries and gunshots</span>
+              </label>
+              <label class="mc-label">
+                <input type="radio" class="track-input" name="q4" value="c" />
+                <span><strong class="text-[#00f3ff]">c</strong> Falls, back injuries and muscle strains</span>
+              </label>
+              <label class="mc-label">
+                <input type="radio" class="track-input" name="q4" value="d" />
+                <span><strong class="text-[#00f3ff]">d</strong> Gunshots, back injuries and falls</span>
+              </label>
+            </div>
+            <div class="feedback-note" id="fb-q4"></div>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 5                                                      -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q5">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 05 / 12</span>
+            <span class="text-xs text-slate-400">Writing Task</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Application Letter</h3>
+          <p class="text-sm text-slate-300 mb-3">Write an application letter for the job advertisement from questions 13 and 14. Don’t forget to use:</p>
+
+          <div class="flex flex-wrap gap-2 mb-4 p-3 rounded-xl bg-[#050508]/90 border border-[#ff007f]/35 text-xs sm:text-sm text-[#00f3ff] italic">
+            <span class="px-2.5 py-1 rounded bg-white/5">Dear Sir/Madam,</span>
+            <span class="px-2.5 py-1 rounded bg-white/5">I am writing to apply for…</span>
+            <span class="px-2.5 py-1 rounded bg-white/5">I would be very grateful if…</span>
+            <span class="px-2.5 py-1 rounded bg-white/5">I am enclosing…</span>
+            <span class="px-2.5 py-1 rounded bg-white/5">I look forward to hearing from you.</span>
+            <span class="px-2.5 py-1 rounded bg-white/5">Sincerely,</span>
+          </div>
+
+          <div class="sub-item" data-qid="q5">
+            <textarea
+              class="w-full min-h-[220px] leading-relaxed track-input"
+              name="q5"
+              placeholder="Dear Sir/Madam,&#10;&#10;I am writing to apply for..."
+            ></textarea>
+            <div class="feedback-note" id="fb-q5"></div>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 6                                                      -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q6">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 06 / 12</span>
+            <span class="text-xs text-slate-400">Vocabulary</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Work Expressions</h3>
+          <p class="text-sm text-slate-300 mb-4">Complete the sentences with the expressions in the box.</p>
+
+          <!-- Neon Word Bank -->
+          <div class="flex flex-wrap justify-center gap-2.5 p-3.5 mb-5 rounded-xl bg-[#050508] border border-[#00f3ff]/50 shadow-[0_0_15px_rgba(0,243,255,0.15)]">
+            <span class="px-3 py-1 rounded-lg bg-[#00f3ff]/15 text-[#00f3ff] font-semibold text-sm">apprenticeship</span>
+            <span class="px-3 py-1 rounded-lg bg-[#00f3ff]/15 text-[#00f3ff] font-semibold text-sm">promotion</span>
+            <span class="px-3 py-1 rounded-lg bg-[#00f3ff]/15 text-[#00f3ff] font-semibold text-sm">wages</span>
+            <span class="px-3 py-1 rounded-lg bg-[#00f3ff]/15 text-[#00f3ff] font-semibold text-sm">work experience</span>
+            <span class="px-3 py-1 rounded-lg bg-[#00f3ff]/15 text-[#00f3ff] font-semibold text-sm">application form</span>
+          </div>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q6a">
+            <strong class="text-[#00f3ff]">a</strong> The job requires prior experience and pays very low <input type="text" class="inline-blank track-input" name="q6a" />.
+            <div class="feedback-note" id="fb-q6a"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base" data-qid="q6b">
+            <strong class="text-[#00f3ff]">b</strong> Tell Helen to fill out the <input type="text" class="inline-blank track-input" name="q6b" /> if she wants the job.
+            <div class="feedback-note" id="fb-q6b"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base" data-qid="q6c">
+            <strong class="text-[#00f3ff]">c</strong> You don’t need <input type="text" class="inline-blank track-input" name="q6c" /> to get an entry-level job at a store.
+            <div class="feedback-note" id="fb-q6c"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base" data-qid="q6d">
+            <strong class="text-[#00f3ff]">d</strong> I’ve been working here for five years and I’ve never asked for a <input type="text" class="inline-blank track-input" name="q6d" />.
+            <div class="feedback-note" id="fb-q6d"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base" data-qid="q6e">
+            <strong class="text-[#00f3ff]">e</strong> You can apply for an <input type="text" class="inline-blank track-input" name="q6e" /> while you're still at school.
+            <div class="feedback-note" id="fb-q6e"></div>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 7                                                      -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q7">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 07 / 12</span>
+            <span class="text-xs text-slate-400">Matching</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Match the Columns</h3>
+          <p class="text-sm text-slate-300 mb-5">Select the letter (<strong>a – e</strong>) on the right column to complete each sentence.</p>
+
+          <div class="overflow-x-auto rounded-xl border border-[#00f3ff]/30">
+            <table class="w-full text-left border-collapse">
+              <tbody class="divide-y divide-white/10 text-sm sm:text-base">
+                <tr class="sub-item" data-qid="q7a">
+                  <td class="p-3.5 w-3/5"><strong class="text-[#00f3ff]">a</strong> George needs some advice on how to behave during a ….</td>
+                  <td class="p-3.5 w-2/5 bg-white/[0.02]">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <strong class="text-[#ff007f]">1</strong>
+                      <span>(</span>
+                      <select class="track-input !py-1 !px-2 font-bold text-[#00f3ff]" name="q7_1" aria-label="Match for option 1">
+                        <option value="">—</option>
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                        <option value="c">c</option>
+                        <option value="d">d</option>
+                        <option value="e">e</option>
+                      </select>
+                      <span>) sign the contract</span>
+                    </div>
+                    <div class="feedback-note" id="fb-q7_1"></div>
+                  </td>
+                </tr>
+                <tr class="sub-item" data-qid="q7b">
+                  <td class="p-3.5"><strong class="text-[#00f3ff]">b</strong> Philip needs the job. He is … and has a baby.</td>
+                  <td class="p-3.5 bg-white/[0.02]">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <strong class="text-[#ff007f]">2</strong>
+                      <span>(</span>
+                      <select class="track-input !py-1 !px-2 font-bold text-[#00f3ff]" name="q7_2" aria-label="Match for option 2">
+                        <option value="">—</option>
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                        <option value="c">c</option>
+                        <option value="d">d</option>
+                        <option value="e">e</option>
+                      </select>
+                      <span>) applied for a job</span>
+                    </div>
+                    <div class="feedback-note" id="fb-q7_2"></div>
+                  </td>
+                </tr>
+                <tr class="sub-item" data-qid="q7c">
+                  <td class="p-3.5"><strong class="text-[#00f3ff]">c</strong> Karen got the job. Now she’s waiting to ….</td>
+                  <td class="p-3.5 bg-white/[0.02]">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <strong class="text-[#ff007f]">3</strong>
+                      <span>(</span>
+                      <select class="track-input !py-1 !px-2 font-bold text-[#00f3ff]" name="q7_3" aria-label="Match for option 3">
+                        <option value="">—</option>
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                        <option value="c">c</option>
+                        <option value="d">d</option>
+                        <option value="e">e</option>
+                      </select>
+                      <span>) job interview</span>
+                    </div>
+                    <div class="feedback-note" id="fb-q7_3"></div>
+                  </td>
+                </tr>
+                <tr class="sub-item" data-qid="q7d">
+                  <td class="p-3.5"><strong class="text-[#00f3ff]">d</strong> I have … and now I’m waiting for the interview.</td>
+                  <td class="p-3.5 bg-white/[0.02]">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <strong class="text-[#ff007f]">4</strong>
+                      <span>(</span>
+                      <select class="track-input !py-1 !px-2 font-bold text-[#00f3ff]" name="q7_4" aria-label="Match for option 4">
+                        <option value="">—</option>
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                        <option value="c">c</option>
+                        <option value="d">d</option>
+                        <option value="e">e</option>
+                      </select>
+                      <span>) benefits</span>
+                    </div>
+                    <div class="feedback-note" id="fb-q7_4"></div>
+                  </td>
+                </tr>
+                <tr class="sub-item" data-qid="q7e">
+                  <td class="p-3.5"><strong class="text-[#00f3ff]">e</strong> My son has gotten a very good job that offers high wages, bonuses, and ….</td>
+                  <td class="p-3.5 bg-white/[0.02]">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <strong class="text-[#ff007f]">5</strong>
+                      <span>(</span>
+                      <select class="track-input !py-1 !px-2 font-bold text-[#00f3ff]" name="q7_5" aria-label="Match for option 5">
+                        <option value="">—</option>
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                        <option value="c">c</option>
+                        <option value="d">d</option>
+                        <option value="e">e</option>
+                      </select>
+                      <span>) unemployed</span>
+                    </div>
+                    <div class="feedback-note" id="fb-q7_5"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 8                                                      -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q8">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 08 / 12</span>
+            <span class="text-xs text-slate-400">Collocations</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Choose the Correct Verb</h3>
+          <p class="text-sm text-slate-300 mb-5">Tap the correct option to complete each sentence.</p>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q8a">
+            <strong class="text-[#00f3ff]">a</strong> Who doesn’t want to
+            <span class="inline-choice-group">
+              <label><input type="radio" class="track-input" name="q8a" value="earn" /><span>earn</span></label>
+              <span class="text-slate-600 !p-0">/</span>
+              <label><input type="radio" class="track-input" name="q8a" value="win" /><span>win</span></label>
+            </span>
+            a high salary?
+            <div class="feedback-note" id="fb-q8a"></div>
+          </div>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q8b">
+            <strong class="text-[#00f3ff]">b</strong> I
+            <span class="inline-choice-group">
+              <label><input type="radio" class="track-input" name="q8b" value="have" /><span>have</span></label>
+              <span class="text-slate-600 !p-0">/</span>
+              <label><input type="radio" class="track-input" name="q8b" value="get" /><span>get</span></label>
+            </span>
+            a full-time job but I need more money.
+            <div class="feedback-note" id="fb-q8b"></div>
+          </div>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q8c">
+            <strong class="text-[#00f3ff]">c</strong> How do I
+            <span class="inline-choice-group">
+              <label><input type="radio" class="track-input" name="q8c" value="get" /><span>get</span></label>
+              <span class="text-slate-600 !p-0">/</span>
+              <label><input type="radio" class="track-input" name="q8c" value="earn" /><span>earn</span></label>
+            </span>
+            a pension?
+            <div class="feedback-note" id="fb-q8c"></div>
+          </div>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q8d">
+            <strong class="text-[#00f3ff]">d</strong> How can I help a friend when they
+            <span class="inline-choice-group">
+              <label><input type="radio" class="track-input" name="q8d" value="lose" /><span>lose</span></label>
+              <span class="text-slate-600 !p-0">/</span>
+              <label><input type="radio" class="track-input" name="q8d" value="get" /><span>get</span></label>
+            </span>
+            a job?
+            <div class="feedback-note" id="fb-q8d"></div>
+          </div>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q8e">
+            <strong class="text-[#00f3ff]">e</strong> Ian
+            <span class="inline-choice-group">
+              <label><input type="radio" class="track-input" name="q8e" value="works" /><span>works</span></label>
+              <span class="text-slate-600 !p-0">/</span>
+              <label><input type="radio" class="track-input" name="q8e" value="have" /><span>have</span></label>
+            </span>
+            part-time because he’s still in high school.
+            <div class="feedback-note" id="fb-q8e"></div>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 9                                                      -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q9">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 09 / 12</span>
+            <span class="text-xs text-slate-400">Grammar • Conditionals</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">First Conditional</h3>
+          <p class="text-sm text-slate-300 mb-5">Complete the sentences. Use the <strong>first conditional</strong> (<em>If + Present Simple, will + verb</em>).</p>
+
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q9a">
+            <strong class="text-[#00f3ff]">a</strong> If you <input type="text" class="inline-blank track-input" name="q9a_1" /> <span class="text-slate-400 text-xs">(follow)</span> my instructions, you <input type="text" class="inline-blank track-input" name="q9a_2" /> <span class="text-slate-400 text-xs">(not get)</span> lost.
+            <div class="feedback-note" id="fb-q9a"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q9b">
+            <strong class="text-[#00f3ff]">b</strong> If the kids <input type="text" class="inline-blank track-input" name="q9b_1" /> <span class="text-slate-400 text-xs">(come)</span>, I <input type="text" class="inline-blank track-input" name="q9b_2" /> <span class="text-slate-400 text-xs">(talk)</span> to them about their homework.
+            <div class="feedback-note" id="fb-q9b"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q9c">
+            <strong class="text-[#00f3ff]">c</strong> If you <input type="text" class="inline-blank track-input" name="q9c_1" /> <span class="text-slate-400 text-xs">(go)</span> to the doctor, he <input type="text" class="inline-blank track-input" name="q9c_2" /> <span class="text-slate-400 text-xs">(give)</span> you some medicine.
+            <div class="feedback-note" id="fb-q9c"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q9d">
+            <strong class="text-[#00f3ff]">d</strong> If you <input type="text" class="inline-blank track-input" name="q9d_1" /> <span class="text-slate-400 text-xs">(knock)</span> on the door, they <input type="text" class="inline-blank track-input" name="q9d_2" /> <span class="text-slate-400 text-xs">(open)</span> it.
+            <div class="feedback-note" id="fb-q9d"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q9e">
+            <strong class="text-[#00f3ff]">e</strong> If you <input type="text" class="inline-blank track-input" name="q9e_1" /> <span class="text-slate-400 text-xs">(move)</span>, you <input type="text" class="inline-blank track-input" name="q9e_2" /> <span class="text-slate-400 text-xs">(fall)</span>.
+            <div class="feedback-note" id="fb-q9e"></div>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 10                                                     -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q10">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 10 / 12</span>
+            <span class="text-xs text-slate-400">Grammar • Conditionals</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Second Conditional</h3>
+          <p class="text-sm text-slate-300 mb-5">Complete the sentences. Use the <strong>second conditional</strong> (<em>If + Past Simple, would + verb</em>).</p>
+
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q10a">
+            <strong class="text-[#00f3ff]">a</strong> If I <input type="text" class="inline-blank track-input" name="q10a_1" /> <span class="text-slate-400 text-xs">(be)</span> rich, I <input type="text" class="inline-blank track-input" name="q10a_2" /> <span class="text-slate-400 text-xs">(travel)</span> the world.
+            <div class="feedback-note" id="fb-q10a"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q10b">
+            <strong class="text-[#00f3ff]">b</strong> If you <input type="text" class="inline-blank track-input" name="q10b_1" /> <span class="text-slate-400 text-xs">(work)</span> from home, you <input type="text" class="inline-blank track-input" name="q10b_2" /> <span class="text-slate-400 text-xs">(save)</span> money.
+            <div class="feedback-note" id="fb-q10b"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q10c">
+            <strong class="text-[#00f3ff]">c</strong> If she <input type="text" class="inline-blank track-input" name="q10c_1" /> <span class="text-slate-400 text-xs">(know)</span> his number, she <input type="text" class="inline-blank track-input" name="q10c_2" /> <span class="text-slate-400 text-xs">(call)</span> him.
+            <div class="feedback-note" id="fb-q10c"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q10d">
+            <strong class="text-[#00f3ff]">d</strong> If my dad <input type="text" class="inline-blank track-input" name="q10d_1" /> <span class="text-slate-400 text-xs">(have)</span> a choice, he <input type="text" class="inline-blank track-input" name="q10d_2" /> <span class="text-slate-400 text-xs">(live)</span> out in the countryside.
+            <div class="feedback-note" id="fb-q10d"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q10e">
+            <strong class="text-[#00f3ff]">e</strong> If we <input type="text" class="inline-blank track-input" name="q10e_1" /> <span class="text-slate-400 text-xs">(go)</span> by car, we <input type="text" class="inline-blank track-input" name="q10e_2" /> <span class="text-slate-400 text-xs">(arrive)</span> earlier.
+            <div class="feedback-note" id="fb-q10e"></div>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 11                                                     -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q11">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 11 / 12</span>
+            <span class="text-xs text-slate-400">Grammar • Mixed Conditionals</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Correct Verb Forms</h3>
+          <p class="text-sm text-slate-300 mb-5">Complete the sentences with the correct form of the verbs.</p>
+
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q11a">
+            <strong class="text-[#00f3ff]">a</strong> If I were you, I <input type="text" class="inline-blank track-input" name="q11a" /> <span class="text-slate-400 text-xs">(not buy)</span> that car.
+            <div class="feedback-note" id="fb-q11a"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q11b">
+            <strong class="text-[#00f3ff]">b</strong> If I had the money, I <input type="text" class="inline-blank track-input" name="q11b" /> <span class="text-slate-400 text-xs">(lend)</span> it to you.
+            <div class="feedback-note" id="fb-q11b"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q11c">
+            <strong class="text-[#00f3ff]">c</strong> Tom would come to the party If he <input type="text" class="inline-blank track-input" name="q11c" /> <span class="text-slate-400 text-xs">(have)</span> time.
+            <div class="feedback-note" id="fb-q11c"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q11d">
+            <strong class="text-[#00f3ff]">d</strong> If I get the tickets, I <input type="text" class="inline-blank track-input" name="q11d" /> <span class="text-slate-400 text-xs">(let)</span> you know.
+            <div class="feedback-note" id="fb-q11d"></div>
+          </div>
+          <div class="sub-item text-sm sm:text-base leading-loose" data-qid="q11e">
+            <strong class="text-[#00f3ff]">e</strong> If I <input type="text" class="inline-blank track-input" name="q11e" /> <span class="text-slate-400 text-xs">(find)</span> your cell phone, I’ll tell you.
+            <div class="feedback-note" id="fb-q11e"></div>
+          </div>
+        </div>
+
+        <!-- =============================================================== -->
+        <!-- QUESTION 12                                                     -->
+        <!-- =============================================================== -->
+        <div class="question-block w-full bg-[#10101c]/90 neon-border-cyan rounded-2xl p-5 sm:p-7" id="block-q12">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <span class="font-cyber text-xs font-bold uppercase tracking-widest text-[#ff007f]">Question 12 / 12</span>
+            <span class="text-xs text-slate-400">Grammar • Gerunds & Infinitives</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-1">Gerund vs. Infinitive</h3>
+          <p class="text-sm text-slate-300 mb-5">Choose the correct option to complete the sentences.</p>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q12a">
+            <strong class="text-[#00f3ff]">a</strong> Laura wants
+            <span class="inline-choice-group">
+              <label><input type="radio" class="track-input" name="q12a" value="to get" /><span>to get</span></label>
+              <span class="text-slate-600 !p-0">/</span>
+              <label><input type="radio" class="track-input" name="q12a" value="getting" /><span>getting</span></label>
+            </span>
+            a part-time job to help her parents with the bills.
+            <div class="feedback-note" id="fb-q12a"></div>
+          </div>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q12b">
+            <strong class="text-[#00f3ff]">b</strong> They want someone who enjoys
+            <span class="inline-choice-group">
+              <label><input type="radio" class="track-input" name="q12b" value="to work" /><span>to work</span></label>
+              <span class="text-slate-600 !p-0">/</span>
+              <label><input type="radio" class="track-input" name="q12b" value="working" /><span>working</span></label>
+            </span>
+            in open spaces.
+            <div class="feedback-note" id="fb-q12b"></div>
+          </div>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q12c">
+            <strong class="text-[#00f3ff]">c</strong> You should prepare before
+            <span class="inline-choice-group">
+              <label><input type="radio" class="track-input" name="q12c" value="to go" /><span>to go</span></label>
+              <span class="text-slate-600 !p-0">/</span>
+              <label><input type="radio" class="track-input" name="q12c" value="going" /><span>going</span></label>
+            </span>
+            to a job interview.
+            <div class="feedback-note" id="fb-q12c"></div>
+          </div>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q12d">
+            <strong class="text-[#00f3ff]">d</strong>
+            <span class="inline-choice-group">
+              <label><input type="radio" class="track-input" name="q12d" value="Being" /><span>Being</span></label>
+              <span class="text-slate-600 !p-0">/</span>
+              <label><input type="radio" class="track-input" name="q12d" value="To be" /><span>To be</span></label>
+            </span>
+            unemployed is very stressful.
+            <div class="feedback-note" id="fb-q12d"></div>
+          </div>
+
+          <div class="sub-item text-sm sm:text-base" data-qid="q12e">
+            <strong class="text-[#00f3ff]">e</strong> Sam is happy
+            <span class="inline-choice-group">
+              <label><input type="radio" class="track-input" name="q12e" value="meeting" /><span>meeting</span></label>
+              <span class="text-slate-600 !p-0">/</span>
+              <label><input type="radio" class="track-input" name="q12e" value="to meet" /><span>to meet</span></label>
+            </span>
+            her family again.
+            <div class="feedback-note" id="fb-q12e"></div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- BOTTOM ACTION BAR -->
+    <footer class="w-full bg-[#0a0a12]/95 backdrop-blur-md border-t border-[#00f3ff]/30 safe-bottom safe-x z-30 mt-4">
+      <div class="w-full max-w-6xl mx-auto py-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="text-xs sm:text-sm text-slate-400">
+          Revisa todas tus respuestas antes de finalizar la evaluación.
+        </div>
+
+        <div class="flex items-center gap-3 ml-auto">
+          <button
+            type="button"
+            id="btn-reset-footer"
+            class="btn-ghost-dark text-xs sm:text-sm font-semibold px-4 py-3 rounded-xl hidden items-center gap-1.5 cursor-pointer"
+            title="Reiniciar respuestas (Solo docente)"
+          >
+            <span>Reiniciar Evaluación</span>
+          </button>
+
+          <button
+            type="button"
+            id="btn-grade"
+            class="btn-neon-magenta font-cyber font-bold text-xs sm:text-sm px-6 sm:px-8 py-3.5 rounded-xl tracking-wide uppercase inline-flex items-center gap-2 cursor-pointer"
+          >
+            <span>Finalizar y Calificar Evaluación</span>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 3. MODAL DE LECTURA RÁPIDA (CAUTION: TEENS AT WORK)                   -->
+  <!-- ===================================================================== -->
+  <div id="reading-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4 safe-x safe-top safe-bottom">
+    <div class="w-full max-w-3xl max-h-[85dvh] flex flex-col bg-[#10101c] neon-border-cyan rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,243,255,0.25)]">
+      <div class="flex items-center justify-between px-5 py-4 bg-[#0a0a12] border-b border-[#00f3ff]/30">
+        <div>
+          <span class="font-cyber text-[11px] uppercase tracking-widest text-[#00f3ff] block">Reading Reference • Q1–Q4</span>
+          <h3 class="text-lg font-bold text-white">Caution: Teens at Work</h3>
+        </div>
+        <button
+          type="button"
+          id="btn-close-reading"
+          class="btn-neon-magenta text-xs font-cyber font-bold px-3.5 py-2 rounded-lg uppercase cursor-pointer"
+        >
+          Cerrar ✕
+        </button>
+      </div>
+      <div class="p-5 sm:p-6 overflow-y-auto space-y-3.5 text-slate-200 text-sm sm:text-base leading-relaxed">
+        <p>
+          When teenagers look for a job, they often have just one thing in mind: money. Money for dates, or college, or even their family's rent and groceries. They aren't worried about long-term job security or climbing the career ladder. Most of them don't even think about job safety. But work-related injuries are among the biggest threats to their health. According to the National Institute for Occupational Safety and Health, more than 200,000 kids between the ages of 14 and 17 are hurt on the job every year in the United States, and more than 75,000 require emergency room treatment. Each year, nearly 70 kids under 18 die at work.
+        </p>
+        <p>
+          The types of injuries teens suffer are varied: Some burn themselves making French fries, some injure their backs while loading trucks, others get shot while working the night shift at a convenience store.
+        </p>
+        <p>
+          There are laws protecting them from some of the most dangerous and stressful tasks, but teens shouldn't assume their employers will know or follow these rules. Even large, well-known companies were caught in federal investigations of child labor law violations.
+        </p>
+        <p>
+          Teenage workers need to take charge of their own safety. They should insist on being trained and shouldn't hesitate to ask questions. Teens should also know that they have the right to refuse any task that seems unsafe. After all, some things really are more important than a paycheck.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 4. DIÁLOGO DE CONFIRMACIÓN PERSONALIZADO (SIN ALERT / CONFIRM NATIVO) -->
+  <!-- ===================================================================== -->
+  <div id="custom-dialog" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4 safe-x safe-top safe-bottom">
+    <div class="w-full max-w-md bg-[#10101c] neon-border-magenta rounded-2xl p-6 text-center shadow-[0_0_35px_rgba(255,0,127,0.3)]">
+      <h3 id="dialog-title" class="font-cyber text-lg font-bold text-white mb-2">Confirmación</h3>
+      <p id="dialog-message" class="text-sm text-slate-300 mb-6 leading-relaxed"></p>
+      <div class="flex items-center justify-center gap-3">
+        <button
+          type="button"
+          id="dialog-btn-cancel"
+          class="btn-ghost-dark text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl cursor-pointer"
+        >
+          Cancelar
+        </button>
+        <button
+          type="button"
+          id="dialog-btn-confirm"
+          class="btn-neon-magenta font-cyber text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl uppercase cursor-pointer"
+        >
+          Continuar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 5. PANTALLA DE BLOQUEO FINAL POST-EVALUACIÓN (PIN PROFESOR: 1955)     -->
+  <!-- ===================================================================== -->
+  <section id="teacher-lock-screen" class="fixed inset-0 z-[70] hidden flex-col items-center justify-center bg-[#050508] safe-x safe-top safe-bottom overflow-y-auto p-4">
+    <div class="w-full max-w-lg bg-[#10101c] neon-border-magenta rounded-2xl p-6 sm:p-8 text-center my-auto relative overflow-hidden shadow-[0_0_50px_rgba(255,0,127,0.3)]">
+      <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#ff007f] via-[#ffe600] to-[#00f3ff]"></div>
+
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ff007f]/15 border border-[#ff007f]/50 text-[#ff4da6] font-cyber text-xs font-bold tracking-wider uppercase mb-3">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        Evaluación Finalizada y Bloqueada
+      </div>
+
+      <h2 class="font-cyber text-xl sm:text-2xl font-extrabold text-white mb-1" id="lock-student-name">
+        Estudiante
+      </h2>
+      <p id="lock-finish-reason" class="text-xs text-slate-400 mb-5">
+        Prueba entregada correctamente. Entrega el dispositivo al docente.
+      </p>
+
+      <!-- Estado de bloqueo sin mostrar calificación al estudiante -->
+      <div class="bg-[#050508] border border-[#ff007f]/45 rounded-2xl p-4 sm:p-5 mb-5 shadow-[0_0_20px_rgba(255,0,127,0.14)]">
+        <div class="text-xs uppercase tracking-widest text-[#ff4da6] font-bold mb-1.5">Acceso Restringido</div>
+        <p class="text-sm text-slate-300 leading-relaxed mb-3">
+          Los resultados y la calificación han quedado protegidos. Solo el docente puede desbloquear la pantalla para revisar la nota.
+        </p>
+        <div id="w3f-delivery-status" class="text-xs font-semibold px-3 py-2 rounded-lg bg-[#00f3ff]/10 border border-[#00f3ff]/30 text-[#00f3ff]">
+          Preparando envío de resultados vía Web3Forms...
+        </div>
+      </div>
+
+      <!-- Teacher PIN Unlock Box -->
+      <div class="bg-[#0a0a12] border border-white/15 rounded-xl p-4">
+        <label for="teacher-pin-input" class="block text-xs font-cyber uppercase tracking-wider text-slate-300 mb-2">
+          Desbloqueo Exclusivo Docente (PIN)
+        </label>
+        <form onsubmit="return false;" autocomplete="off" class="flex items-center justify-center gap-2 max-w-xs mx-auto">
+          <input
+            type="password"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="4"
+            id="teacher-pin-input"
+            name="teacher_pin_nonce"
+            class="w-full text-center font-cyber !text-xl tracking-[0.4em] !py-2.5 bg-[#050508] border border-[#00f3ff]/50 rounded-xl text-[#00f3ff]"
+            placeholder="••••"
+            autocomplete="new-password"
+            readonly
+            onfocus="this.removeAttribute('readonly');"
+          />
+          <button
+            type="button"
+            id="btn-unlock-pin"
+            class="btn-neon-cyan font-cyber font-bold text-xs px-4 py-3 rounded-xl uppercase tracking-wider flex-shrink-0 cursor-pointer"
+          >
+            Desbloquear
+          </button>
+        </form>
+        <p id="pin-error-msg" class="hidden text-xs text-[#ff4da6] font-semibold mt-2">
+          PIN incorrecto. Solo el profesor puede desbloquear esta evaluación.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /**
+     * =========================================================================
+     * CLAVE DE RESPUESTAS (ANSWER KEY) - ÍNTEGRA DEL DOCUMENTO ORIGINAL
+     * =========================================================================
+     */
+    const ANSWER_KEY = {
+      q1a: { tf: "T", explanation: "True. Paragraph 1: 'Money for dates, or college, or even their family's rent and groceries.'" },
+      q1b: { tf: "T", explanation: "True. Paragraph 1: 'Most of them don't even think about job safety.'" },
+      q1c: { tf: "T", explanation: "True. Paragraph 1: 'Each year, nearly 70 kids under 18 die at work.'" },
+      q1d: {
+        tf: "F",
+        suggestedCorrection: "Even large, well-known companies were caught in federal investigations of child labor law violations (or: employers do not always know or follow the rules).",
+        explanation: "False. Paragraph 3 states that even large, well-known companies violated child labor laws."
+      },
+      q1e: {
+        tf: "F",
+        suggestedCorrection: "There are laws protecting them, but employers don't always follow them (and teens need to take charge of their own safety).",
+        explanation: "False. Paragraph 3 explicitly states: 'There are laws protecting them from some of the most dangerous and stressful tasks...'"
+      },
+
+      q2: {
+        correct: "c",
+        explanation: "Correct option: c. Paragraph 4 emphasizes that teenage workers need to take charge of their own safety, insist on training, ask questions, and refuse unsafe tasks."
+      },
+
+      q3a: {
+        accepted: ["more than 200,000", "more than 200000", "> 200,000", "over 200,000", "over 200000"],
+        display: "More than 200,000"
+      },
+      q3b: {
+        accepted: ["more than 75,000", "more than 75000", "> 75,000", "over 75,000", "over 75000"],
+        display: "More than 75,000"
+      },
+      q3c: {
+        accepted: ["nearly 70", "almost 70", "70"],
+        display: "Nearly 70"
+      },
+      q3d: {
+        accepted: ["between 14 and 17", "14 and 17", "14-17", "14 to 17", "between the ages of 14 and 17"],
+        display: "Between 14 and 17"
+      },
+
+      q4: {
+        correct: "b",
+        explanation: "Correct option: b. Paragraph 2 mentions: 'burn themselves' (burns), 'injure their backs' (back injuries), and 'get shot' (gunshots)."
+      },
+
+      q5: {
+        requiredPhrases: [
+          "dear sir/madam",
+          "i am writing to apply for",
+          "i would be very grateful if",
+          "i am enclosing",
+          "i look forward to hearing from you",
+          "sincerely"
+        ]
+      },
+
+      q6a: { accepted: ["wages"], display: "wages" },
+      q6b: { accepted: ["application form"], display: "application form" },
+      q6c: { accepted: ["work experience"], display: "work experience" },
+      q6d: { accepted: ["promotion"], display: "promotion" },
+      q6e: { accepted: ["apprenticeship"], display: "apprenticeship" },
+
+      q7_1: { correct: "c", display: "c (Karen got the job. Now she’s waiting to sign the contract.)" },
+      q7_2: { correct: "d", display: "d (I have applied for a job and now I’m waiting for the interview.)" },
+      q7_3: { correct: "a", display: "a (George needs some advice on how to behave during a job interview.)" },
+      q7_4: { correct: "e", display: "e (My son has gotten a very good job that offers high wages, bonuses, and benefits.)" },
+      q7_5: { correct: "b", display: "b (Philip needs the job. He is unemployed and has a baby.)" },
+
+      q8a: { correct: "earn", explanation: "We 'earn' a salary/money through work." },
+      q8b: { correct: "have", explanation: "'I have a full-time job' describes current employment status." },
+      q8c: { correct: "get", explanation: "'Get a pension' is the standard collocation." },
+      q8d: { correct: "lose", explanation: "Context: helping a friend in a difficult situation ('lose a job')." },
+      q8e: { correct: "works", explanation: "Third-person singular present simple ('Ian works part-time')." },
+
+      q9a: {
+        part1: ["follow"],
+        part2: ["will not get", "won't get", "wont get"],
+        display: "follow / won't get (will not get)"
+      },
+      q9b: {
+        part1: ["come"],
+        part2: ["will talk", "'ll talk"],
+        display: "come / will talk ('ll talk)"
+      },
+      q9c: {
+        part1: ["go"],
+        part2: ["will give", "'ll give"],
+        display: "go / will give ('ll give)"
+      },
+      q9d: {
+        part1: ["knock"],
+        part2: ["will open", "'ll open"],
+        display: "knock / will open ('ll open)"
+      },
+      q9e: {
+        part1: ["move"],
+        part2: ["will fall", "'ll fall"],
+        display: "move / will fall ('ll fall)"
+      },
+
+      q10a: {
+        part1: ["were", "was"],
+        part2: ["would travel", "'d travel"],
+        display: "were (was) / would travel ('d travel)"
+      },
+      q10b: {
+        part1: ["worked"],
+        part2: ["would save", "'d save"],
+        display: "worked / would save ('d save)"
+      },
+      q10c: {
+        part1: ["knew"],
+        part2: ["would call", "'d call"],
+        display: "knew / would call ('d call)"
+      },
+      q10d: {
+        part1: ["had"],
+        part2: ["would live", "'d live"],
+        display: "had / would live ('d live)"
+      },
+      q10e: {
+        part1: ["went"],
+        part2: ["would arrive", "'d arrive"],
+        display: "went / would arrive ('d arrive)"
+      },
+
+      q11a: {
+        accepted: ["would not buy", "wouldn't buy", "wouldnt buy"],
+        display: "wouldn't buy (would not buy)"
+      },
+      q11b: {
+        accepted: ["would lend", "'d lend"],
+        display: "would lend ('d lend)"
+      },
+      q11c: {
+        accepted: ["had"],
+        display: "had"
+      },
+      q11d: {
+        accepted: ["will let", "'ll let"],
+        display: "will let ('ll let)"
+      },
+      q11e: {
+        accepted: ["find"],
+        display: "find"
+      },
+
+      q12a: { correct: "to get", explanation: "'want' is followed by to-infinitive (wants to get)." },
+      q12b: { correct: "working", explanation: "'enjoy' is followed by a gerund (enjoys working)." },
+      q12c: { correct: "going", explanation: "After prepositions like 'before', use a gerund (before going)." },
+      q12d: { correct: "Being", explanation: "Gerund as the subject of a sentence (Being unemployed...)." },
+      q12e: { correct: "to meet", explanation: "Adjectives expressing emotion ('happy') are followed by to-infinitive (happy to meet)." }
+    };
+
+    const ITEM_GROUPS = [
+      "q1a", "q1b", "q1c", "q1d", "q1e",
+      "q2",
+      "q3a", "q3b", "q3c", "q3d",
+      "q4",
+      "q5",
+      "q6a", "q6b", "q6c", "q6d", "q6e",
+      "q7_1", "q7_2", "q7_3", "q7_4", "q7_5",
+      "q8a", "q8b", "q8c", "q8d", "q8e",
+      "q9a", "q9b", "q9c", "q9d", "q9e",
+      "q10a", "q10b", "q10c", "q10d", "q10e",
+      "q11a", "q11b", "q11c", "q11d", "q11e",
+      "q12a", "q12b", "q12c", "q12d", "q12e"
+    ];
+
+    let isGraded = false;
+    let examActive = false;
+    let isTeacherUnlocked = false;
+
+    // Timer & Anti-Copy State
+    const EXAM_DURATION_SECONDS = 45 * 60; // 45 minutos
+    let remainingSeconds = EXAM_DURATION_SECONDS;
+    let timerInterval = null;
+    let antiCopyLog = [];
+    let lastViolationTimestamp = 0;
+    let lastScoreSummary = null;
+    const TEACHER_PIN = "1955";
+    const STORAGE_KEY = "unit6_neon_exam_state_v1";
+    // Coloca aquí tu Access Key de Web3Forms (solo visible en el código fuente):
+    const WEB3FORMS_ACCESS_KEY = "416b17b9-6b5c-4b4c-a932-56c3db4aa5d4";
+
+    /* =========================================================================
+       ENVÍO DE RESULTADOS POR WEB3FORMS
+       ========================================================================= */
+    function getWeb3FormsKey() {
+      const key = (WEB3FORMS_ACCESS_KEY || "").trim();
+      if (!key || key === "TU_ACCESS_KEY_DE_WEB3FORMS_AQUI") return "";
+      return key;
+    }
+
+    async function sendResultsToWeb3Forms(results, finishReason) {
+      const statusEl = document.getElementById("w3f-delivery-status");
+      const accessKey = getWeb3FormsKey();
+      const studentName = document.getElementById("welcome-student-name").value.trim() || "Estudiante";
+
+      if (!accessKey) {
+        if (statusEl) {
+          statusEl.className = "text-xs font-semibold px-3 py-2 rounded-lg bg-[#ffe600]/10 border border-[#ffe600]/40 text-[#fef08a]";
+          statusEl.textContent = "Resultados guardados localmente (sin Access Key de Web3Forms configurada).";
+        }
+        return;
+      }
+
+      if (statusEl) {
+        statusEl.className = "text-xs font-semibold px-3 py-2 rounded-lg bg-[#00f3ff]/10 border border-[#00f3ff]/35 text-[#00f3ff]";
+        statusEl.textContent = "Enviando resultados al docente vía Web3Forms...";
+      }
+
+      const answers = collectAllAnswers();
+      delete answers._studentName;
+
+      const formattedAnswers = Object.entries(answers)
+        .map(([k, v]) => `${k}: ${v || "(vacío)"}`)
+        .join("\n");
+
+      const formattedIncidents =
+        antiCopyLog.length === 0
+          ? "Sin incidencias de seguridad detectadas."
+          : antiCopyLog.map((item, idx) => `#${idx + 1} [${item.time}] ${item.reason}`).join("\n");
+
+      const payload = {
+        access_key: accessKey,
+        subject: `Unit 6 Assessment - ${studentName} (${results.scoreOverTen.toFixed(2)}/10)`,
+        from_name: "Unit 6 Interactive Assessment",
+        Estudiante: studentName,
+        Calificacion_Sobre_10: `${results.scoreOverTen.toFixed(2)} / 10.00`,
+        Aciertos_Objetivos: `${results.score} / ${results.autoGradableTotal} (${results.percentage}%)`,
+        Motivo_Cierre: finishReason,
+        Incidencias_Seguridad_Interna: `${antiCopyLog.length} incidencia(s)\n${formattedIncidents}`,
+        Detalle_Respuestas: formattedAnswers
+      };
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          if (statusEl) {
+            statusEl.className = "text-xs font-semibold px-3 py-2 rounded-lg bg-[#39ff14]/15 border border-[#39ff14]/45 text-[#39ff14]";
+            statusEl.textContent = "✔ Resultados enviados correctamente al docente.";
+          }
+        } else {
+          throw new Error(data.message || "Error al enviar formulario");
+        }
+      } catch (err) {
+        if (statusEl) {
+          statusEl.className = "text-xs font-semibold px-3 py-2 rounded-lg bg-[#ff007f]/15 border border-[#ff007f]/45 text-[#fda4af]";
+          statusEl.textContent = "⚠ No se pudo conectar con Web3Forms (resultados respaldados en el dispositivo).";
+        }
+      }
+    }
+
+    /* =========================================================================
+       PERSISTENCIA COMPLETA EN LOCALSTORAGE (ESTADO, RESPUESTAS, TIMER, PIN)
+       ========================================================================= */
+    function collectAllAnswers() {
+      const answers = {};
+      const studentNameInput = document.getElementById("welcome-student-name");
+      answers._studentName = studentNameInput ? studentNameInput.value : "";
+
+      document.querySelectorAll("#app-shell input[type='text'], #app-shell textarea").forEach((el) => {
+        if (el.name) answers[el.name] = el.value;
+      });
+      document.querySelectorAll("#app-shell select").forEach((el) => {
+        if (el.name) answers[el.name] = el.value;
+      });
+      document.querySelectorAll("#app-shell input[type='radio']:checked").forEach((el) => {
+        if (el.name) answers[el.name] = el.value;
+      });
+      return answers;
+    }
+
+    function restoreAllAnswers(answers) {
+      if (!answers) return;
+      if (typeof answers._studentName === "string") {
+        document.getElementById("welcome-student-name").value = answers._studentName;
+      }
+
+      document.querySelectorAll("#app-shell input[type='text'], #app-shell textarea").forEach((el) => {
+        if (el.name && answers[el.name] !== undefined) {
+          el.value = answers[el.name];
+        }
+      });
+      document.querySelectorAll("#app-shell select").forEach((el) => {
+        if (el.name && answers[el.name] !== undefined) {
+          el.value = answers[el.name];
+        }
+      });
+      document.querySelectorAll("#app-shell input[type='radio']").forEach((el) => {
+        if (el.name && answers[el.name] !== undefined) {
+          el.checked = el.value === answers[el.name];
+        }
+      });
+    }
+
+    function saveExamState() {
+      try {
+        const state = {
+          status: isGraded ? (isTeacherUnlocked ? "unlocked" : "locked") : (examActive ? "active" : "idle"),
+          studentName: document.getElementById("welcome-student-name").value.trim(),
+          remainingSeconds,
+          antiCopyLog,
+          answers: collectAllAnswers(),
+          scoreSummary: lastScoreSummary,
+          savedAt: Date.now()
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function clearExamState() {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+    }
+
+    /* =========================================================================
+       FULLSCREEN MANAGEMENT (Cross-browser + Safe iOS Safari Fallback)
+       ========================================================================= */
+    function enterFullscreenSafe() {
+      const elem = document.documentElement;
+      try {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen().catch(() => {});
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        }
+      } catch (err) {
+        // Fallback silencioso en iOS Safari donde requestFullscreen no está soportado en <html>
+      }
+      updateFullscreenIcons();
+    }
+
+    function toggleFullscreen() {
+      const isFs = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+      try {
+        if (!isFs) {
+          enterFullscreenSafe();
+        } else if (!examActive) {
+          // Solo permite salir de pantalla completa si la prueba NO está activa
+          if (document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          }
+        } else {
+          registerAntiCopyViolation("Intento de salir del modo pantalla completa");
+        }
+      } catch (err) {}
+    }
+
+    function updateFullscreenIcons() {
+      const isFs = Boolean(document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
+      document.getElementById("icon-fs-enter").classList.toggle("hidden", isFs);
+      document.getElementById("icon-fs-exit").classList.toggle("hidden", !isFs);
+
+      // Si el examen está activo y el usuario sale de pantalla completa (ej. tecla ESC)
+      if (examActive && !isFs) {
+        registerAntiCopyViolation("Salida del modo pantalla completa (ESC / gesto)");
+      }
+    }
+
+    document.addEventListener("fullscreenchange", updateFullscreenIcons);
+    document.addEventListener("webkitfullscreenchange", updateFullscreenIcons);
+
+    /* =========================================================================
+       TIMER 45 MINUTOS (45:00 -> 00:00 AUTO-SUBMIT)
+       ========================================================================= */
+    function formatSeconds(sec) {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+    }
+
+    function startExamTimer(initialSeconds = EXAM_DURATION_SECONDS) {
+      stopExamTimer();
+      remainingSeconds = initialSeconds;
+      updateTimerDisplay();
+
+      timerInterval = setInterval(() => {
+        if (!examActive) {
+          stopExamTimer();
+          return;
+        }
+        remainingSeconds--;
+        updateTimerDisplay();
+        saveExamState();
+
+        if (remainingSeconds <= 0) {
+          stopExamTimer();
+          gradeExam(true, "Tiempo agotado (45:00). La evaluación se cerró y calificó automáticamente.");
+        }
+      }, 1000);
+    }
+
+    function stopExamTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+    }
+
+    function updateTimerDisplay() {
+      const displayEl = document.getElementById("exam-timer-display");
+      const boxEl = document.getElementById("exam-timer-box");
+      displayEl.textContent = formatSeconds(Math.max(0, remainingSeconds));
+
+      if (remainingSeconds <= 300) {
+        boxEl.classList.add("timer-danger");
+      } else {
+        boxEl.classList.remove("timer-danger");
+      }
+    }
+
+    /* =========================================================================
+       MÓDULO ANTICOPIA SILENCIOSO (REGISTRO INTERNO SIN MOSTRAR AL ESTUDIANTE)
+       ========================================================================= */
+    function registerAntiCopyViolation(reasonText) {
+      if (!examActive) return;
+
+      // Evitar duplicados simultáneos (blur + visibilitychange en el mismo instante)
+      const now = Date.now();
+      if (now - lastViolationTimestamp < 1200) return;
+      lastViolationTimestamp = now;
+
+      const timeStr = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+      antiCopyLog.push({
+        time: timeStr,
+        reason: reasonText
+      });
+
+      saveExamState();
+    }
+
+    // Bloqueo silencioso de clic derecho
+    document.addEventListener("contextmenu", (e) => {
+      if (examActive) {
+        e.preventDefault();
+        registerAntiCopyViolation("Intento de abrir menú contextual (clic derecho)");
+      }
+    });
+
+    // Bloqueo silencioso de copiar, cortar y pegar
+    ["copy", "cut", "paste"].forEach((evtName) => {
+      document.addEventListener(evtName, (e) => {
+        if (examActive) {
+          e.preventDefault();
+          registerAntiCopyViolation(`Intento de ${evtName === "paste" ? "pegar" : "copiar/cortar"} contenido`);
+        }
+      });
+    });
+
+    // Bloqueo silencioso de atajos de teclado (Ctrl/Cmd + C, V, X, A, U, S, P, I, J, F12)
+    document.addEventListener("keydown", (e) => {
+      if (!examActive) return;
+      const key = e.key.toLowerCase();
+      const isCtrlOrCmd = e.ctrlKey || e.metaKey;
+
+      if (
+        e.key === "F12" ||
+        (isCtrlOrCmd && ["c", "v", "x", "a", "u", "s", "p", "i", "j"].includes(key))
+      ) {
+        e.preventDefault();
+        registerAntiCopyViolation(`Atajo de teclado bloqueado (${isCtrlOrCmd ? "Ctrl/Cmd+" : ""}${e.key.toUpperCase()})`);
+      }
+    });
+
+    // Detección silenciosa de cambio de pestaña / minimizar app en iPhone o Mac
+    document.addEventListener("visibilitychange", () => {
+      if (examActive && document.hidden) {
+        registerAntiCopyViolation("Cambio de pestaña o minimización de la aplicación");
+      }
+    });
+
+    window.addEventListener("blur", () => {
+      if (examActive) {
+        registerAntiCopyViolation("Pérdida de enfoque de la ventana de evaluación");
+      }
+    });
+
+    /* =========================================================================
+       CUSTOM DIALOG (Replaces native confirm/alert)
+       ========================================================================= */
+    function showCustomDialog({ title, message, confirmText = "Continuar", showCancel = true }) {
+      return new Promise((resolve) => {
+        const overlay = document.getElementById("custom-dialog");
+        document.getElementById("dialog-title").textContent = title;
+        document.getElementById("dialog-message").innerHTML = message;
+        const btnConfirm = document.getElementById("dialog-btn-confirm");
+        const btnCancel = document.getElementById("dialog-btn-cancel");
+
+        btnConfirm.textContent = confirmText;
+        btnCancel.style.display = showCancel ? "inline-block" : "none";
+
+        overlay.classList.remove("hidden");
+        overlay.classList.add("flex");
+
+        const cleanup = (result) => {
+          overlay.classList.add("hidden");
+          overlay.classList.remove("flex");
+          btnConfirm.onclick = null;
+          btnCancel.onclick = null;
+          resolve(result);
+        };
+
+        btnConfirm.onclick = () => cleanup(true);
+        btnCancel.onclick = () => cleanup(false);
+      });
+    }
+
+    /* =========================================================================
+       READING MODAL CONTROLS
+       ========================================================================= */
+    function openReadingModal() {
+      const modal = document.getElementById("reading-modal");
+      if (!modal) return;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeReadingModal() {
+      const modal = document.getElementById("reading-modal");
+      if (!modal) return;
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    document.getElementById("btn-open-reading")?.addEventListener("click", openReadingModal);
+    document.getElementById("btn-close-reading")?.addEventListener("click", closeReadingModal);
+    document.getElementById("reading-modal")?.addEventListener("click", (e) => {
+      if (e.target.id === "reading-modal") closeReadingModal();
+    });
+
+    /* =========================================================================
+       PROGRESS & NORMALIZATION LOGIC
+       ========================================================================= */
+    function normalizeText(str) {
+      if (!str) return "";
+      return str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[’‘]/g, "'")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function isItemAnswered(itemId) {
+      if (itemId.startsWith("q9") || itemId.startsWith("q10")) {
+        const v1 = document.querySelector(`[name="${itemId}_1"]`).value.trim();
+        const v2 = document.querySelector(`[name="${itemId}_2"]`).value.trim();
+        return v1 !== "" || v2 !== "";
+      }
+      if (itemId === "q2" || itemId === "q4" || itemId.startsWith("q8") || itemId.startsWith("q12")) {
+        return document.querySelector(`input[name="${itemId}"]:checked`) !== null;
+      }
+      const el = document.querySelector(`[name="${itemId}"]`);
+      return el && el.value.trim() !== "";
+    }
+
+    function updateProgress() {
+      let answeredCount = 0;
+      ITEM_GROUPS.forEach((id) => {
+        if (isItemAnswered(id)) answeredCount++;
+      });
+      const total = ITEM_GROUPS.length;
+      const pct = Math.round((answeredCount / total) * 100);
+      document.getElementById("progress-label").textContent = `${answeredCount} / ${total} ítems`;
+      document.getElementById("progress-bar").style.width = `${pct}%`;
+    }
+
+    document.querySelectorAll(".track-input").forEach((el) => {
+      el.addEventListener("input", () => {
+        updateProgress();
+        if (examActive) saveExamState();
+      });
+      el.addEventListener("change", () => {
+        updateProgress();
+        if (examActive) saveExamState();
+      });
+    });
+
+    // Guardar también correcciones de la Pregunta 1
+    document.querySelectorAll('input[name$="_corr"]').forEach((el) => {
+      el.addEventListener("input", () => {
+        if (examActive) saveExamState();
+      });
+    });
+
+    /* =========================================================================
+       GRADING ENGINE
+       ========================================================================= */
+    function setFeedback(qid, status, message) {
+      const container =
+        document.querySelector(`[data-qid="${qid}"]`) ||
+        document.getElementById(`fb-${qid}`)?.closest(".sub-item");
+      const fbEl = document.getElementById(`fb-${qid}`);
+      if (container) {
+        container.classList.remove("status-correct", "status-incorrect", "status-pending");
+        container.classList.add(`status-${status}`);
+      }
+      if (fbEl) {
+        fbEl.className = `feedback-note visible ${status}`;
+        fbEl.innerHTML = message;
+      }
+    }
+
+    function setInputsDisabled(disabled) {
+      document.querySelectorAll("#app-shell input, #app-shell select, #app-shell textarea").forEach((el) => {
+        el.disabled = disabled;
+      });
+    }
+
+    function showTeacherLockScreen(finishReason) {
+      const studentName = document.getElementById("welcome-student-name").value.trim() || "Estudiante";
+      document.getElementById("lock-student-name").textContent = studentName;
+      document.getElementById("lock-finish-reason").textContent = finishReason;
+
+      // Garantizar que el campo PIN esté vacío y sin autocompletado al bloquear o recargar
+      const pinInput = document.getElementById("teacher-pin-input");
+      pinInput.value = "";
+      pinInput.setAttribute("readonly", "readonly");
+      setTimeout(() => {
+        pinInput.value = "";
+      }, 60);
+      document.getElementById("pin-error-msg").classList.add("hidden");
+
+      const lockScreen = document.getElementById("teacher-lock-screen");
+      lockScreen.classList.remove("hidden");
+      lockScreen.classList.add("flex");
+    }
+
+    function renderTeacherAuditLog() {
+      const totalBadge = document.getElementById("audit-total-badge");
+      const listEl = document.getElementById("audit-log-list");
+      const count = antiCopyLog.length;
+      totalBadge.textContent = `${count} ${count === 1 ? "incidencia" : "incidencias"}`;
+
+      if (count === 0) {
+        listEl.innerHTML = `<li class="text-[#39ff14]">✔ Ninguna incidencia detectada durante toda la evaluación.</li>`;
+        return;
+      }
+
+      listEl.innerHTML = antiCopyLog
+        .map(
+          (item, idx) =>
+            `<li class="border-b border-white/5 pb-1"><span class="text-[#00f3ff]">#${idx + 1} [${item.time}]</span> ${item.reason}</li>`
+        )
+        .join("");
+    }
+
+    function evaluateAnswersOnly() {
+      let score = 0;
+      const autoGradableTotal = 46;
+
+      // 1. Question 1
+      ["q1a", "q1b", "q1c", "q1d", "q1e"].forEach((qid) => {
+        const userTf = document.querySelector(`[name="${qid}"]`).value;
+        const userCorr = document.querySelector(`[name="${qid}_corr"]`).value.trim();
+        const key = ANSWER_KEY[qid];
+
+        if (!userTf) {
+          setFeedback(qid, "pending", `Sin responder. Respuesta esperada: <strong>${key.tf}</strong>. ${key.explanation}`);
+        } else if (userTf === key.tf) {
+          score++;
+          if (key.tf === "F") {
+            const corrNote = userCorr
+              ? `Tu corrección ("<em>${userCorr}</em>") queda registrada para revisión docente.`
+              : `<strong>Nota:</strong> Falta escribir la corrección de la oración falsa.`;
+            setFeedback(
+              qid,
+              userCorr ? "correct" : "pending",
+              `✔ ¡Correcto (${key.tf})! ${corrNote}<br><small class="opacity-85">Sugerencia: ${key.suggestedCorrection}</small>`
+            );
+          } else {
+            setFeedback(qid, "correct", `✔ ¡Correcto! ${key.explanation}`);
+          }
+        } else {
+          setFeedback(
+            qid,
+            "incorrect",
+            `✘ Incorrecto. Seleccionaste <strong>${userTf}</strong>, pero es <strong>${key.tf}</strong>. ${key.explanation}`
+          );
+        }
+      });
+
+      // 2. Question 2 & 4
+      ["q2", "q4"].forEach((qid) => {
+        const selected = document.querySelector(`input[name="${qid}"]:checked`);
+        const key = ANSWER_KEY[qid];
+        if (!selected) {
+          setFeedback(qid, "pending", `Sin responder. ${key.explanation}`);
+        } else if (selected.value === key.correct) {
+          score++;
+          setFeedback(qid, "correct", `✔ ¡Correcto! ${key.explanation}`);
+        } else {
+          setFeedback(
+            qid,
+            "incorrect",
+            `✘ Incorrecto. Elegiste la opción <strong>${selected.value}</strong>. ${key.explanation}`
+          );
+        }
+      });
+
+      // 3. Question 3
+      ["q3a", "q3b", "q3c", "q3d"].forEach((qid) => {
+        const raw = document.querySelector(`[name="${qid}"]`).value;
+        const norm = normalizeText(raw);
+        const key = ANSWER_KEY[qid];
+        if (!norm) {
+          setFeedback(qid, "pending", `Sin responder. Respuesta del texto: <strong>${key.display}</strong>`);
+        } else if (key.accepted.some((ans) => normalizeText(ans) === norm)) {
+          score++;
+          setFeedback(qid, "correct", `✔ ¡Correcto! (${key.display})`);
+        } else {
+          setFeedback(qid, "incorrect", `✘ Incorrecto. Según el artículo: <strong>${key.display}</strong>`);
+        }
+      });
+
+      // 4. Question 5
+      const q5Text = document.querySelector(`[name="q5"]`).value.trim();
+      const q5Norm = normalizeText(q5Text);
+      if (!q5Text) {
+        setFeedback(
+          "q5",
+          "pending",
+          `Sin responder. Esta pregunta es de redacción abierta (requiere revisión manual del docente).`
+        );
+      } else {
+        const missingPhrases = ANSWER_KEY.q5.requiredPhrases.filter((p) => !q5Norm.includes(p));
+        if (missingPhrases.length === 0) {
+          setFeedback(
+            "q5",
+            "pending",
+            `✔ Carta enviada con todas las expresiones requeridas. Sujeta a calificación manual del docente.`
+          );
+        } else {
+          setFeedback(
+            "q5",
+            "pending",
+            `Carta enviada para revisión docente. Faltan o varían algunas expresiones sugeridas: <strong>${missingPhrases.join(", ")}</strong>.`
+          );
+        }
+      }
+
+      // 5. Question 6
+      ["q6a", "q6b", "q6c", "q6d", "q6e"].forEach((qid) => {
+        const norm = normalizeText(document.querySelector(`[name="${qid}"]`).value);
+        const key = ANSWER_KEY[qid];
+        if (!norm) {
+          setFeedback(qid, "pending", `Sin responder. Respuesta correcta: <strong>${key.display}</strong>`);
+        } else if (key.accepted.includes(norm)) {
+          score++;
+          setFeedback(qid, "correct", `✔ ¡Correcto! (<strong>${key.display}</strong>)`);
+        } else {
+          setFeedback(qid, "incorrect", `✘ Incorrecto. La expresión correcta es: <strong>${key.display}</strong>`);
+        }
+      });
+
+      // 6. Question 7
+      ["q7_1", "q7_2", "q7_3", "q7_4", "q7_5"].forEach((qid) => {
+        const val = document.querySelector(`[name="${qid}"]`).value;
+        const key = ANSWER_KEY[qid];
+        if (!val) {
+          setFeedback(qid, "pending", `Sin responder. Corresponde a: <strong>${key.display}</strong>`);
+        } else if (val === key.correct) {
+          score++;
+          setFeedback(qid, "correct", `✔ ¡Correcto! (${key.display})`);
+        } else {
+          setFeedback(qid, "incorrect", `✘ Incorrecto. Corresponde a: <strong>${key.display}</strong>`);
+        }
+      });
+
+      // 7. Question 8 & 12
+      ["q8a", "q8b", "q8c", "q8d", "q8e", "q12a", "q12b", "q12c", "q12d", "q12e"].forEach((qid) => {
+        const selected = document.querySelector(`input[name="${qid}"]:checked`);
+        const key = ANSWER_KEY[qid];
+        if (!selected) {
+          setFeedback(qid, "pending", `Sin responder. Opción correcta: <strong>${key.correct}</strong>. ${key.explanation}`);
+        } else if (selected.value === key.correct) {
+          score++;
+          setFeedback(qid, "correct", `✔ ¡Correcto! ${key.explanation}`);
+        } else {
+          setFeedback(
+            qid,
+            "incorrect",
+            `✘ Incorrecto. Elegiste "<strong>${selected.value}</strong>". La opción correcta es "<strong>${key.correct}</strong>". ${key.explanation}`
+          );
+        }
+      });
+
+      // 8. Question 9 & 10
+      ["q9a", "q9b", "q9c", "q9d", "q9e", "q10a", "q10b", "q10c", "q10d", "q10e"].forEach((qid) => {
+        const v1 = normalizeText(document.querySelector(`[name="${qid}_1"]`).value);
+        const v2 = normalizeText(document.querySelector(`[name="${qid}_2"]`).value);
+        const key = ANSWER_KEY[qid];
+        if (!v1 && !v2) {
+          setFeedback(qid, "pending", `Sin responder. Forma correcta: <strong>${key.display}</strong>`);
+        } else if (key.part1.includes(v1) && key.part2.includes(v2)) {
+          score++;
+          setFeedback(qid, "correct", `✔ ¡Correcto! (${key.display})`);
+        } else {
+          setFeedback(qid, "incorrect", `✘ Incorrecto. La estructura correcta es: <strong>${key.display}</strong>`);
+        }
+      });
+
+      // 9. Question 11
+      ["q11a", "q11b", "q11c", "q11d", "q11e"].forEach((qid) => {
+        const val = normalizeText(document.querySelector(`[name="${qid}"]`).value);
+        const key = ANSWER_KEY[qid];
+        if (!val) {
+          setFeedback(qid, "pending", `Sin responder. Forma correcta: <strong>${key.display}</strong>`);
+        } else if (key.accepted.includes(val)) {
+          score++;
+          setFeedback(qid, "correct", `✔ ¡Correcto! (${key.display})`);
+        } else {
+          setFeedback(qid, "incorrect", `✘ Incorrecto. La forma verbal correcta es: <strong>${key.display}</strong>`);
+        }
+      });
+
+      const scoreOverTen = Math.round(((score / autoGradableTotal) * 10) * 100) / 100;
+      const percentage = Math.round((score / autoGradableTotal) * 100);
+      return { score, autoGradableTotal, scoreOverTen, percentage };
+    }
+
+    function applyScoreSummaryToUI({ score, autoGradableTotal, scoreOverTen, percentage }) {
+      const studentName = document.getElementById("welcome-student-name").value.trim() || "Estudiante";
+      document.getElementById("score-student-name").textContent = studentName;
+      document.getElementById("score-ten-badge").textContent = `${scoreOverTen.toFixed(2)} / 10.00`;
+      document.getElementById("score-badge").textContent = `${score} / ${autoGradableTotal} (${percentage}%)`;
+      document.getElementById("score-details").innerHTML = `
+        Calificación objetiva: <strong class="text-[#39ff14]">${scoreOverTen.toFixed(2)} / 10.00 puntos</strong> (${score} de ${autoGradableTotal} aciertos).<br>
+        <span class="text-xs text-slate-400">Nota: La Pregunta 5 (carta de solicitud) y las correcciones escritas de la Pregunta 1 requieren revisión cualitativa del docente.</span>
+      `;
+      renderTeacherAuditLog();
+      document.getElementById("score-summary").classList.remove("hidden");
+    }
+
+    async function gradeExam(forceAutoSubmit = false, customFinishReason = "Evaluación finalizada por el estudiante. Entrega el dispositivo al profesor.") {
+      if (!forceAutoSubmit) {
+        const unansweredIds = ITEM_GROUPS.filter((id) => !isItemAnswered(id));
+        const confirmMsg = unansweredIds.length > 0
+          ? `Tienes <strong>${unansweredIds.length} ítem(s)</strong> sin responder.<br>Al finalizar, la prueba se calificará sobre <strong>10.00 puntos</strong> y quedará <strong>bloqueada</strong> hasta que el profesor ingrese su PIN.`
+          : `¿Deseas entregar y calificar tu evaluación ahora?<br>La pantalla quedará <strong>bloqueada</strong> con tu nota sobre <strong>10.00 puntos</strong> hasta que el profesor la desbloquee.`;
+
+        const proceed = await showCustomDialog({
+          title: "Finalizar y Bloquear Prueba",
+          message: confirmMsg,
+          confirmText: "Sí, finalizar y calificar",
+          showCancel: true
+        });
+        if (!proceed) return;
+      }
+
+      // Finalizar estado activo y detener timer
+      examActive = false;
+      isGraded = true;
+      isTeacherUnlocked = false;
+      stopExamTimer();
+      document.body.classList.remove("exam-locked-copy");
+      setInputsDisabled(true);
+
+      const results = evaluateAnswersOnly();
+      lastScoreSummary = {
+        ...results,
+        finishReason: customFinishReason
+      };
+
+      applyScoreSummaryToUI(results);
+
+      // Persistir inmediatamente el bloqueo en localStorage
+      saveExamState();
+
+      // Bloquear pantalla sin mostrar calificación hasta que el profesor ingrese PIN 1955
+      showTeacherLockScreen(customFinishReason);
+
+      // Enviar resultados automáticamente por Web3Forms
+      sendResultsToWeb3Forms(results, customFinishReason);
+    }
+
+    function attemptTeacherUnlock() {
+      const pinInput = document.getElementById("teacher-pin-input");
+      const errorMsg = document.getElementById("pin-error-msg");
+      if (pinInput.value.trim() === TEACHER_PIN) {
+        isTeacherUnlocked = true;
+        errorMsg.classList.add("hidden");
+        const lockScreen = document.getElementById("teacher-lock-screen");
+        lockScreen.classList.add("hidden");
+        lockScreen.classList.remove("flex");
+
+        // Mostrar panel de revisión docente con registro interno de incidencias
+        renderTeacherAuditLog();
+        document.getElementById("btn-reset-footer").classList.remove("hidden");
+        document.getElementById("btn-reset-footer").classList.add("inline-flex");
+        document.getElementById("btn-grade").classList.add("hidden");
+
+        saveExamState();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        errorMsg.classList.remove("hidden");
+        pinInput.value = "";
+        pinInput.focus();
+      }
+    }
+
+    document.getElementById("btn-unlock-pin").addEventListener("click", attemptTeacherUnlock);
+    document.getElementById("teacher-pin-input").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        attemptTeacherUnlock();
+      }
+    });
+
+    document.getElementById("btn-relock-exam").addEventListener("click", () => {
+      if (!isGraded) return;
+      isTeacherUnlocked = false;
+      saveExamState();
+      const lockScreen = document.getElementById("teacher-lock-screen");
+      document.getElementById("teacher-pin-input").value = "";
+      document.getElementById("pin-error-msg").classList.add("hidden");
+      lockScreen.classList.remove("hidden");
+      lockScreen.classList.add("flex");
+    });
+
+    async function resetExam() {
+      if (!isTeacherUnlocked && isGraded) return;
+
+      const ok = await showCustomDialog({
+        title: "Reiniciar para Nuevo Estudiante",
+        message: "¿Deseas borrar todas las respuestas, reiniciar el contador de 45 minutos y volver a la pantalla inicial?",
+        confirmText: "Sí, reiniciar todo",
+        showCancel: true
+      });
+      if (!ok) return;
+
+      examActive = false;
+      isGraded = false;
+      isTeacherUnlocked = false;
+      stopExamTimer();
+      antiCopyLog = [];
+      lastScoreSummary = null;
+      clearExamState();
+      document.body.classList.remove("exam-locked-copy");
+
+      setInputsDisabled(false);
+      document.getElementById("welcome-student-name").value = "";
+      document.querySelectorAll("#app-shell input[type='text'], #app-shell textarea").forEach((el) => (el.value = ""));
+      document.querySelectorAll("#app-shell select").forEach((el) => (el.selectedIndex = 0));
+      document.querySelectorAll("#app-shell input[type='radio']").forEach((el) => (el.checked = false));
+
+      document.querySelectorAll(".sub-item").forEach((el) => {
+        el.classList.remove("status-correct", "status-incorrect", "status-pending");
+      });
+      document.querySelectorAll(".feedback-note").forEach((el) => {
+        el.className = "feedback-note";
+        el.innerHTML = "";
+      });
+
+      document.getElementById("score-summary").classList.add("hidden");
+      document.getElementById("btn-reset-footer").classList.add("hidden");
+      document.getElementById("btn-reset-footer").classList.remove("inline-flex");
+      document.getElementById("btn-grade").classList.remove("hidden");
+      document.getElementById("btn-grade").classList.add("inline-flex");
+      document.getElementById("welcome-name-error").classList.add("hidden");
+
+      // Volver a pantalla de bienvenida
+      const appShell = document.getElementById("app-shell");
+      appShell.classList.add("hidden");
+      appShell.classList.remove("flex");
+      document.getElementById("welcome-screen").classList.remove("hidden");
+
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    /* =========================================================================
+       START EXAM, SESSION RECOVERY & EVENT LISTENERS
+       ========================================================================= */
+    function startExamFlow() {
+      const nameField = document.getElementById("welcome-student-name");
+      const nameError = document.getElementById("welcome-name-error");
+      const studentName = nameField.value.trim();
+
+      if (!studentName) {
+        nameError.classList.remove("hidden");
+        nameField.focus();
+        return;
+      }
+
+      nameError.classList.add("hidden");
+      const badge = document.getElementById("header-student-badge");
+      badge.textContent = studentName;
+
+      // Activar seguridad anticopia, temporizador 45 min y pantalla completa
+      examActive = true;
+      isGraded = false;
+      isTeacherUnlocked = false;
+      antiCopyLog = [];
+      lastScoreSummary = null;
+      document.body.classList.add("exam-locked-copy");
+      setInputsDisabled(false);
+
+      enterFullscreenSafe();
+      document.getElementById("welcome-screen").classList.add("hidden");
+      const appShell = document.getElementById("app-shell");
+      appShell.classList.remove("hidden");
+      appShell.classList.add("flex");
+
+      updateProgress();
+      startExamTimer(EXAM_DURATION_SECONDS);
+      saveExamState();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function restoreSavedSessionOnLoad() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const saved = JSON.parse(raw);
+        if (!saved || !saved.status || saved.status === "idle") return;
+
+        // Restaurar respuestas y registro interno
+        restoreAllAnswers(saved.answers || {});
+        if (saved.studentName) {
+          document.getElementById("welcome-student-name").value = saved.studentName;
+          document.getElementById("header-student-badge").textContent = saved.studentName;
+        }
+        antiCopyLog = Array.isArray(saved.antiCopyLog) ? saved.antiCopyLog : [];
+        updateProgress();
+
+        // Mostrar contenedor principal y ocultar bienvenida
+        document.getElementById("welcome-screen").classList.add("hidden");
+        const appShell = document.getElementById("app-shell");
+        appShell.classList.remove("hidden");
+        appShell.classList.add("flex");
+
+        if (saved.status === "locked") {
+          // La prueba estaba bloqueada: mantener bloqueada exigiendo PIN 1955
+          examActive = false;
+          isGraded = true;
+          isTeacherUnlocked = false;
+          document.body.classList.remove("exam-locked-copy");
+          setInputsDisabled(true);
+          remainingSeconds = saved.remainingSeconds || 0;
+          updateTimerDisplay();
+
+          const results = evaluateAnswersOnly();
+          lastScoreSummary = saved.scoreSummary || {
+            ...results,
+            finishReason: "Evaluación bloqueada. Entrega el dispositivo al profesor."
+          };
+          applyScoreSummaryToUI(results);
+          const statusEl = document.getElementById("w3f-delivery-status");
+          if (statusEl) {
+            statusEl.className = "text-xs font-semibold px-3 py-2 rounded-lg bg-[#00f3ff]/10 border border-[#00f3ff]/30 text-[#00f3ff]";
+            statusEl.textContent = "Evaluación bloqueada previamente. Ingresa el PIN docente para revisar.";
+          }
+          showTeacherLockScreen(
+            lastScoreSummary.finishReason || "Evaluación bloqueada. Entrega el dispositivo al profesor."
+          );
+        } else if (saved.status === "unlocked") {
+          // El docente la había desbloqueado con PIN
+          examActive = false;
+          isGraded = true;
+          isTeacherUnlocked = true;
+          document.body.classList.remove("exam-locked-copy");
+          setInputsDisabled(true);
+          remainingSeconds = saved.remainingSeconds || 0;
+          updateTimerDisplay();
+
+          const results = evaluateAnswersOnly();
+          lastScoreSummary = saved.scoreSummary || results;
+          applyScoreSummaryToUI(results);
+          document.getElementById("btn-reset-footer").classList.remove("hidden");
+          document.getElementById("btn-reset-footer").classList.add("inline-flex");
+          document.getElementById("btn-grade").classList.add("hidden");
+        } else if (saved.status === "active") {
+          // El estudiante recargó la página mientras rendía la prueba:
+          // restaurar progreso, continuar cronómetro y registrar silenciosamente la recarga
+          examActive = true;
+          isGraded = false;
+          isTeacherUnlocked = false;
+          document.body.classList.add("exam-locked-copy");
+          setInputsDisabled(false);
+
+          const elapsedOffline = Math.floor((Date.now() - (saved.savedAt || Date.now())) / 1000);
+          const nextRemaining = Math.max(1, (saved.remainingSeconds || EXAM_DURATION_SECONDS) - Math.min(elapsedOffline, 60));
+
+          const timeStr = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+          antiCopyLog.push({
+            time: timeStr,
+            reason: "Recarga o reapertura de la página durante el examen"
+          });
+
+          startExamTimer(nextRemaining);
+          saveExamState();
+        }
+      } catch (e) {}
+    }
+
+    document.getElementById("btn-start-exam").addEventListener("click", startExamFlow);
+    document.getElementById("welcome-student-name").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        startExamFlow();
+      }
+    });
+    document.getElementById("welcome-student-name").addEventListener("input", () => {
+      document.getElementById("welcome-name-error").classList.add("hidden");
+    });
+
+    document.getElementById("btn-toggle-fullscreen").addEventListener("click", toggleFullscreen);
+    document.getElementById("btn-grade").addEventListener("click", () => gradeExam(false));
+    document.getElementById("btn-reset-top").addEventListener("click", resetExam);
+    document.getElementById("btn-reset-footer").addEventListener("click", resetExam);
+
+    // Verificar sesión guardada al cargar (ejecución inmediata y en DOMContentLoaded)
+    restoreSavedSessionOnLoad();
+    window.addEventListener("DOMContentLoaded", () => {
+      const pinInput = document.getElementById("teacher-pin-input");
+      if (pinInput) pinInput.value = "";
+    });
+  </script>
+</body>
+</html>
